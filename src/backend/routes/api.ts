@@ -1,9 +1,34 @@
 import { Router, Request, Response } from 'express';
+import { z } from 'zod';
 import { db } from '../db/store.js';
 import { orchestratorEngine } from '../services/orchestrator.js';
 import { verifyRazorpaySignature, cryptoRandomUUID } from '../utils/cryptoUtils.js';
 
 export const apiRouter = Router();
+
+// Zod Input Validation Schemas (Rule 3)
+const WebhookBodySchema = z.object({
+  event_id: z.string().optional(),
+  id: z.string().optional(),
+  merchant_id: z.string().optional(),
+  mandate_id: z.string().optional(),
+  invoice_id: z.string().optional(),
+  amount: z.number().optional(),
+  error_code: z.string().optional(),
+  error_description: z.string().optional(),
+  payload: z.any().optional(),
+});
+
+const ReviewDecisionSchema = z.object({
+  decision: z.enum(['APPROVE_UPI_SWITCH', 'RETRY_MANUAL', 'CANCEL'])
+});
+
+const SimulationTriggerSchema = z.object({
+  preset: z.enum(['TIER_1_SOFT_FAIL', 'TIER_2_MANDATE_EXPIRED', 'TIER_3_HIGH_VALUE_HITL', 'CBDC_SETTLEMENT_RAIL', 'OPEN_BANKING_VRP_RAIL']).optional(),
+  customAmount: z.number().min(1).max(500000).optional(),
+  customErrorCode: z.string().max(100).optional(),
+  customErrorDesc: z.string().max(500).optional(),
+});
 
 // ==========================================
 // 1. Webhook Ingestion Endpoint
@@ -15,13 +40,18 @@ apiRouter.post('/v1/webhooks/razorpay', async (req: Request, res: Response) => {
     const isValid = verifyRazorpaySignature(rawBody, signature);
 
     if (!isValid && signature !== 'rzp_sim_sig' && process.env.NODE_ENV === 'production') {
-      return res.status(401).json({ error: 'INVALID_SIGNATURE', message: 'Razorpay webhook signature verification failed' });
+      return res.status(401).json({ error: 'UNAUTHORIZED_SIGNATURE', message: 'Razorpay webhook HMAC-SHA256 signature verification failed' });
     }
 
-    const payload = req.body;
+    const parseResult = WebhookBodySchema.safeParse(req.body);
+    if (!parseResult.success) {
+      return res.status(400).json({ error: 'BAD_REQUEST_VALIDATION', message: 'Invalid payload structure', details: parseResult.error.format() });
+    }
+
+    const payload = parseResult.data;
     const eventId = payload.event_id || payload.id || `event_${cryptoRandomUUID().substring(0, 10)}`;
     
-    // Assert Idempotency
+    // Rule 5: Assert Idempotency
     const existingEvent = db.getFailureEvent(eventId);
     if (existingEvent) {
       const existingTask = db.getRecoveryTaskByEventId(eventId);
@@ -33,7 +63,7 @@ apiRouter.post('/v1/webhooks/razorpay', async (req: Request, res: Response) => {
       });
     }
 
-    const payment = payload.payload?.payment?.entity || payload.payment || {};
+    const payment = payload.payload?.payment?.entity || payload.payload?.payment || {};
     const invoiceId = payment.invoice_id || payload.invoice_id || `inv_${cryptoRandomUUID().substring(0, 8)}`;
     const amount = (payment.amount ? payment.amount / 100 : payload.amount) || 4999;
     const rawErrorCode = payment.error_code || payload.error_code || 'GATEWAY_TIMED_OUT';
@@ -59,8 +89,8 @@ apiRouter.post('/v1/webhooks/razorpay', async (req: Request, res: Response) => {
       task,
     });
   } catch (err: any) {
-    console.error('Webhook ingestion error:', err);
-    return res.status(500).json({ error: 'INGESTION_ERROR', message: err.message });
+    console.error('[Security Exception] Webhook ingestion failed:', err);
+    return res.status(500).json({ error: 'INGESTION_ERROR', message: 'Internal transaction processing error' });
   }
 });
 
@@ -69,31 +99,31 @@ apiRouter.post('/v1/webhooks/razorpay', async (req: Request, res: Response) => {
 // ==========================================
 apiRouter.post('/v1/orchestrator/tasks/:taskId/diagnose', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
+    const taskId = req.params.taskId.trim();
     const task = await orchestratorEngine.diagnoseTask(taskId);
     return res.json({ status: 'SUCCESS', task });
   } catch (err: any) {
-    return res.status(500).json({ error: 'DIAGNOSE_FAILED', message: err.message });
+    return res.status(500).json({ error: 'DIAGNOSE_FAILED', message: 'Task diagnosis failed' });
   }
 });
 
 apiRouter.post('/v1/orchestrator/tasks/:taskId/execute-retry', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
+    const taskId = req.params.taskId.trim();
     const task = await orchestratorEngine.executeRetry(taskId);
     return res.json({ status: 'SUCCESS', task });
   } catch (err: any) {
-    return res.status(500).json({ error: 'RETRY_EXECUTION_FAILED', message: err.message });
+    return res.status(500).json({ error: 'RETRY_EXECUTION_FAILED', message: 'Retry execution failed' });
   }
 });
 
 apiRouter.post('/v1/orchestrator/tasks/:taskId/provision-upi-mandate', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
+    const taskId = req.params.taskId.trim();
     const task = await orchestratorEngine.diagnoseTask(taskId);
     return res.json({ status: 'SUCCESS', task });
   } catch (err: any) {
-    return res.status(500).json({ error: 'PROVISION_FAILED', message: err.message });
+    return res.status(500).json({ error: 'PROVISION_FAILED', message: 'Provisioning failed' });
   }
 });
 
@@ -103,7 +133,7 @@ apiRouter.post('/v1/orchestrator/tasks/:taskId/provision-upi-mandate', async (re
 apiRouter.get('/v1/merchant/tasks', (req: Request, res: Response) => {
   try {
     const statusFilter = req.query.status as string;
-    const limit = parseInt(req.query.limit as string) || 50;
+    const limit = Math.min(parseInt(req.query.limit as string) || 50, 100);
 
     let tasks = db.getAllRecoveryTasks();
     if (statusFilter) {
@@ -124,23 +154,23 @@ apiRouter.get('/v1/merchant/tasks', (req: Request, res: Response) => {
 
     return res.json({ status: 'SUCCESS', count: enriched.length, tasks: enriched });
   } catch (err: any) {
-    return res.status(500).json({ error: 'FETCH_TASKS_FAILED', message: err.message });
+    return res.status(500).json({ error: 'FETCH_TASKS_FAILED', message: 'Failed to fetch tasks' });
   }
 });
 
 apiRouter.post('/v1/merchant/tasks/:taskId/review', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
-    const { decision } = req.body;
-
-    if (!['APPROVE_UPI_SWITCH', 'RETRY_MANUAL', 'CANCEL'].includes(decision)) {
-      return res.status(400).json({ error: 'INVALID_DECISION', message: 'Decision must be APPROVE_UPI_SWITCH, RETRY_MANUAL, or CANCEL' });
+    const taskId = req.params.taskId.trim();
+    const validation = ReviewDecisionSchema.safeParse(req.body);
+    if (!validation.success) {
+      return res.status(400).json({ error: 'BAD_REQUEST_VALIDATION', message: 'Decision must be APPROVE_UPI_SWITCH, RETRY_MANUAL, or CANCEL' });
     }
 
+    const { decision } = validation.data;
     const updatedTask = await orchestratorEngine.handleMerchantReview(taskId, decision);
     return res.json({ status: 'SUCCESS', message: `Task review decision applied: ${decision}`, task: updatedTask });
   } catch (err: any) {
-    return res.status(500).json({ error: 'REVIEW_FAILED', message: err.message });
+    return res.status(500).json({ error: 'REVIEW_FAILED', message: 'Merchant review failed' });
   }
 });
 
@@ -149,7 +179,7 @@ apiRouter.post('/v1/merchant/tasks/:taskId/review', async (req: Request, res: Re
 // ==========================================
 apiRouter.get('/v1/resolve/:token', (req: Request, res: Response) => {
   try {
-    const { token } = req.params;
+    const token = req.params.token.trim();
     const tasks = db.getAllRecoveryTasks();
     const task = tasks.find(t => t.recovery_payment_link?.includes(token) || t.task_id === token);
 
@@ -175,27 +205,27 @@ apiRouter.get('/v1/resolve/:token', (req: Request, res: Response) => {
       }
     });
   } catch (err: any) {
-    return res.status(500).json({ error: 'RESOLVE_FAILED', message: err.message });
+    return res.status(500).json({ error: 'RESOLVE_FAILED', message: 'Resolution details retrieval failed' });
   }
 });
 
 apiRouter.post('/v1/resolve/:taskId/complete', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
+    const taskId = req.params.taskId.trim();
     const updatedTask = await orchestratorEngine.completeUPIAuthorization(taskId);
     return res.json({ status: 'SUCCESS', message: 'Mandate authorization complete', task: updatedTask });
   } catch (err: any) {
-    return res.status(500).json({ error: 'COMPLETE_RESOLVE_FAILED', message: err.message });
+    return res.status(500).json({ error: 'COMPLETE_RESOLVE_FAILED', message: 'Mandate authorization failed' });
   }
 });
 
 apiRouter.post('/v1/resolve/:taskId/cancel', async (req: Request, res: Response) => {
   try {
-    const { taskId } = req.params;
+    const taskId = req.params.taskId.trim();
     const updatedTask = await orchestratorEngine.cancelSubscriptionByCustomer(taskId);
     return res.json({ status: 'SUCCESS', message: 'Subscription cancelled. Dunning notifications halted by kill switch.', task: updatedTask });
   } catch (err: any) {
-    return res.status(500).json({ error: 'CANCEL_RESOLVE_FAILED', message: err.message });
+    return res.status(500).json({ error: 'CANCEL_RESOLVE_FAILED', message: 'Cancellation request failed' });
   }
 });
 
@@ -275,7 +305,7 @@ apiRouter.get('/v1/dashboard/stats', (req: Request, res: Response) => {
       }
     });
   } catch (err: any) {
-    return res.status(500).json({ error: 'STATS_FAILED', message: err.message });
+    return res.status(500).json({ error: 'STATS_FAILED', message: 'Failed to compute dashboard stats' });
   }
 });
 
@@ -285,8 +315,8 @@ apiRouter.get('/v1/bank-telemetry', (req: Request, res: Response) => {
 
 apiRouter.post('/v1/bank-telemetry/toggle', (req: Request, res: Response) => {
   const { bankCode, isOutage } = req.body;
-  if (!bankCode) return res.status(400).json({ error: 'MISSING_BANK_CODE' });
-  const updated = db.toggleBankOutage(bankCode, !!isOutage);
+  if (!bankCode || typeof bankCode !== 'string') return res.status(400).json({ error: 'BAD_REQUEST_VALIDATION', message: 'Missing or invalid bankCode' });
+  const updated = db.toggleBankOutage(bankCode.trim(), !!isOutage);
   return res.json({ status: 'SUCCESS', telemetry: updated });
 });
 
@@ -294,10 +324,15 @@ apiRouter.get('/v1/audit-ledger', (req: Request, res: Response) => {
   return res.json({ status: 'SUCCESS', ledger: db.getAuditLedger() });
 });
 
-// Preset Simulation Trigger Endpoint
+// Simulation Trigger Endpoint with Zod Validation
 apiRouter.post('/v1/simulation/trigger', async (req: Request, res: Response) => {
   try {
-    const { preset, customAmount, customErrorCode, customErrorDesc } = req.body;
+    const validation = SimulationTriggerSchema.safeParse(req.body);
+    if (!validation.success) {
+      return res.status(400).json({ error: 'BAD_REQUEST_VALIDATION', message: 'Invalid simulation parameters', details: validation.error.format() });
+    }
+
+    const { preset, customAmount, customErrorCode, customErrorDesc } = validation.data;
 
     let eventId = `event_sim_${Date.now()}`;
     let mandateId = 'man_card_hdfc_881';
@@ -351,7 +386,7 @@ apiRouter.post('/v1/simulation/trigger', async (req: Request, res: Response) => 
       task,
     });
   } catch (err: any) {
-    return res.status(500).json({ error: 'SIMULATION_FAILED', message: err.message });
+    return res.status(500).json({ error: 'SIMULATION_FAILED', message: 'Simulation execution failed' });
   }
 });
 
