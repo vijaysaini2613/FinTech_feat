@@ -1,4 +1,4 @@
-# 🚀 Autonomous Mandate & Involuntary Churn Healing Engine
+# Autonomous Mandate & Involuntary Churn Healing Engine
 
 > **Razorpay Innovation Hackathon — Track 03: Revenue Recovery**  
 > *An Enterprise-Grade Infrastructure Solution for RBI E-Mandate Rules, Card Token Drops, and Bank Network Outages*
