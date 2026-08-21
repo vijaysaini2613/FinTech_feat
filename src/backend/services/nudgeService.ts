@@ -117,7 +117,7 @@ export class NudgeService {
   }
 
   private async callGeminiNudgeCopy(customerName: string, amountStr: string, merchantName: string, mandateLink: string, sequence: 1 | 2): Promise<string | null> {
-    const apiKey = process.env.GEMINI_API_KEY || 'AIzaSyBfBuE5z_PVgpzEJXL4nD0myhpU5o-PDGE';
+    const apiKey = process.env.GEMINI_API_KEY || '';
     if (!apiKey) return null;
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;

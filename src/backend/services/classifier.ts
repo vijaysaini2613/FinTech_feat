@@ -94,7 +94,7 @@ export class HybridFailureClassifier {
   }
 
   private async callGeminiAPI(rawErrorCode: string, text: string): Promise<ClassificationResult | null> {
-    const apiKey = process.env.GEMINI_API_KEY || 'AIzaSyBfBuE5z_PVgpzEJXL4nD0myhpU5o-PDGE';
+    const apiKey = process.env.GEMINI_API_KEY || '';
     if (!apiKey) return null;
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
