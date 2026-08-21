@@ -238,6 +238,4 @@ FinTech_feat/
 
 ---
 
-## 📜 10. License
 
-Distributed under the MIT License. See `LICENSE` for details.
