@@ -20,47 +20,76 @@ In India's recurring subscription ecosystem, **15% to 30% of recurring payment d
 
 ```mermaid
 flowchart TD
-    subgraph Webhook & Ingestion Layer
-        Razorpay[Razorpay Gateway] -->|POST /webhooks/razorpay| HMACVerif[HMAC-SHA256 Verifier]
-        HMACVerif --> IdempotencyGuard{Idempotency Check<br/>Unique event_id?}
-        IdempotencyGuard -- "Duplicate Event" --> Ignore[HTTP 200 OK<br/>IDEMPOTENT_IGNORED]
-        IdempotencyGuard -- "New Failure Event" --> IngestDB[Persist failure_events]
+    subgraph SubIngest ["⚡ Webhook & Ingestion Layer"]
+        Razorpay["💳 Razorpay Gateway"] -->|POST /webhooks/razorpay| HMACVerif["🔒 HMAC-SHA256 Verifier"]
+        HMACVerif --> IdempotencyGuard{"❓ Idempotency Check<br/>Unique event_id?"}
+        IdempotencyGuard -- "Duplicate Event" --> Ignore["⏹️ HTTP 200 OK<br/>IDEMPOTENT_IGNORED"]
+        IdempotencyGuard -- "New Failure Event" --> IngestDB["💾 Persist failure_events"]
     end
 
-    subgraph Hybrid AI Classifier Layer
-        IngestDB --> Classifier{Hybrid Error Classifier}
-        Classifier -- "Known Error Code" --> RuleEngine[Deterministic Rule Map<br/>100% Confidence]
-        Classifier -- "Cryptic Gateway String" --> GeminiAI[Google Gemini 2.5 Flash AI<br/>Zod Schema Parser]
-        RuleEngine --> ClassificationResult[Category & Recommended Rail]
+    subgraph SubClassifier ["🧠 Hybrid AI Classifier Layer"]
+        IngestDB --> Classifier{"🔍 Hybrid Error Classifier"}
+        Classifier -- "Known Error Code" --> RuleEngine["⚙️ Deterministic Rule Map<br/>100% Confidence"]
+        Classifier -- "Cryptic Gateway String" --> GeminiAI["🤖 Google Gemini 2.5 Flash AI<br/>Zod Schema Parser"]
+        RuleEngine --> ClassificationResult["📋 Category & Recommended Rail"]
         GeminiAI --> ClassificationResult
     end
 
-    subgraph Finite State Machine Orchestrator
-        ClassificationResult --> RowLock["SELECT FOR UPDATE<br/>Acquire Task Lock"]
-        RowLock --> PolicyEngine{Merchant Policy & Threshold Check}
+    subgraph SubFSM ["🛡️ Finite State Machine Orchestrator"]
+        ClassificationResult --> RowLock["🔐 SELECT FOR UPDATE<br/>Acquire Task Lock"]
+        RowLock --> PolicyEngine{"⚖️ Merchant Policy & Threshold Check"}
         
-        PolicyEngine -- "Amount >= ₹25,000 OR Retries >= 2" --> Tier3[Tier 3: ESCALATED_HITL<br/>Dashboard Review Queue]
-        PolicyEngine -- "Transient Timeout & Bank Degraded" --> Tier1[Tier 1: SCHEDULED_RETRY<br/>RBI 24h Compliance Offset]
-        PolicyEngine -- "Mandate Expired / Card Dead" --> Tier2[Tier 2: AWAITING_UPI_AUTH<br/>Pay-by-Bank / UPI AutoPay Link]
+        PolicyEngine -- "Amount >= ₹25,000 OR Retries >= 2" --> Tier3["🚨 Tier 3: ESCALATED_HITL<br/>Dashboard Review Queue"]
+        PolicyEngine -- "Transient Timeout & Bank Degraded" --> Tier1["⏳ Tier 1: SCHEDULED_RETRY<br/>RBI 24h Compliance Offset"]
+        PolicyEngine -- "Mandate Expired / Card Dead" --> Tier2["📲 Tier 2: AWAITING_UPI_AUTH<br/>Pay-by-Bank / UPI AutoPay Link"]
     end
 
-    subgraph Execution & Customer Triage
-        Tier1 --> TelemetryCheck{Bank Clearing Rate > 85%?}
-        TelemetryCheck -- "Yes" --> BackgroundDebit[Execute Off-Peak Debit]
-        TelemetryCheck -- "No" --> WaitWindow[Delay to Off-Peak 03:00 AM]
+    subgraph SubExec ["⚡ Execution & Customer Triage"]
+        Tier1 --> TelemetryCheck{"📊 Bank Clearing Rate > 85%?"}
+        TelemetryCheck -- "Yes" --> BackgroundDebit["⚡ Execute Off-Peak Debit"]
+        TelemetryCheck -- "No" --> WaitWindow["🕒 Delay to Off-Peak 03:00 AM"]
         
-        Tier2 --> WhatsAppNudge[Context-Aware WhatsApp Nudge]
-        WhatsAppNudge --> CustomerClick[1-Tap Mobile UPI Auth]
+        Tier2 --> WhatsAppNudge["💬 Context-Aware WhatsApp Nudge"]
+        WhatsAppNudge --> CustomerClick["👆 1-Tap Mobile UPI Auth"]
         
-        BackgroundDebit --> ResolvedState[State: RESOLVED]
+        BackgroundDebit --> ResolvedState["🎉 State: RESOLVED"]
         CustomerClick --> ResolvedState
     end
 
-    subgraph Merchant Loop & Governance
-        ResolvedState --> WebhookDispatcher[Dispatch Signed Outgoing Webhook<br/>razorfinops.payment.recovered]
-        ResolvedState --> AuditLedger[Append SHA-256 Hash Chained Audit Entry]
-        AuditLedger --> ControlRoom[FinOps Control Room Dashboard]
+    subgraph SubGov ["📜 Merchant Loop & Governance"]
+        ResolvedState --> WebhookDispatcher["📡 Dispatch Signed Webhook<br/>razorfinops.payment.recovered"]
+        ResolvedState --> AuditLedger["🔗 Append SHA-256 Hash Chained Entry"]
+        AuditLedger --> ControlRoom["🖥️ FinOps Control Room Dashboard"]
     end
+
+    %% Custom Cyberpunk Neon Styling
+    classDef gateway fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#fff
+    classDef verifier fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#e0f2fe
+    classDef decision fill:#312e81,stroke:#a5b4fc,stroke-width:2px,color:#fff
+    classDef ai fill:#4c1d95,stroke:#c084fc,stroke-width:2px,color:#fff,font-weight:bold
+    classDef lock fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#fff
+    classDef tier1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff
+    classDef tier2 fill:#581c87,stroke:#e879f9,stroke-width:2px,color:#fff
+    classDef tier3 fill:#881337,stroke:#fb7185,stroke-width:2px,color:#fff
+    classDef resolved fill:#047857,stroke:#10b981,stroke-width:3px,color:#fff,font-weight:bold
+    classDef audit fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fff
+
+    class Razorpay gateway
+    class HMACVerif,IngestDB verifier
+    class IdempotencyGuard,Classifier,PolicyEngine,TelemetryCheck decision
+    class GeminiAI,RuleEngine ai
+    class RowLock lock
+    class Tier1 tier1
+    class Tier2 tier2
+    class Tier3 tier3
+    class ResolvedState,BackgroundDebit,CustomerClick resolved
+    class AuditLedger,WebhookDispatcher,ControlRoom audit
+
+    style SubIngest fill:#0b1329,stroke:#38bdf8,stroke-width:2px,color:#38bdf8
+    style SubClassifier fill:#1a0c36,stroke:#c084fc,stroke-width:2px,color:#c084fc
+    style SubFSM fill:#06231a,stroke:#34d399,stroke-width:2px,color:#34d399
+    style SubExec fill:#270e38,stroke:#e879f9,stroke-width:2px,color:#e879f9
+    style SubGov fill:#261505,stroke:#fbbf24,stroke-width:2px,color:#fbbf24
 ```
 
 ---

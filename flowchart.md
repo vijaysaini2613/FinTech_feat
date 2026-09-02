@@ -9,58 +9,58 @@ This document contains full Mermaid flowcharts detailing the complete lifecycle 
 
 ```mermaid
 flowchart TD
-    subgraph Gateway ["Razorpay Webhook Gateway / scripts/seed_demo.py (Hotkeys 1, 2, 3)"]
-        WH["Razorpay API / CLI Harness"]
+    subgraph Gateway ["💳 Razorpay Webhook Gateway / CLI Simulator"]
+        WH["💳 Razorpay API / CLI Harness (Hotkeys 1, 2, 3)"]
     end
 
-    subgraph Phase1 ["Phase 1: Deterministic Ingestion & Security"]
-        SIG{"Verify HMAC-SHA256 Signature"}
-        IDEM{"Idempotency Check (failure_events.event_id)"}
-        ING_LOG["Log Event & Initialize Task (DETECTED)"]
+    subgraph Phase1 ["⚡ Phase 1: Deterministic Ingestion & Security"]
+        SIG{"🔒 Verify HMAC-SHA256 Signature"}
+        IDEM{"❓ Idempotency Check (failure_events.event_id)"}
+        ING_LOG["💾 Log Event & Initialize Task (DETECTED)"]
     end
 
-    subgraph Concurrency ["Concurrency Defense Layer"]
-        LOCK{"Acquire Row Lock (SELECT FOR UPDATE)"}
+    subgraph Concurrency ["🔐 Concurrency Defense Layer"]
+        LOCK{"🔐 Acquire Row Lock (SELECT FOR UPDATE)"}
     end
 
-    subgraph Phase2 ["Phase 2: Hybrid AI Error Classification"]
-        DIAG["Transition to DIAGNOSING"]
-        KNOWN{"Known Error Code?"}
-        RULE_ENG["Deterministic Rule Engine"]
-        LLM_PARSER["Constrained LLM Semantic Parser (Zod Schema Output)"]
-        CLASS_OUT["Failure Classification Result"]
+    subgraph Phase2 ["🧠 Phase 2: Hybrid AI Error Classification"]
+        DIAG["🔍 Transition to DIAGNOSING"]
+        KNOWN{"❓ Known Error Code?"}
+        RULE_ENG["⚙️ Deterministic Rule Engine"]
+        LLM_PARSER["🤖 Constrained Gemini 2.5 Flash AI (Zod Schema Output)"]
+        CLASS_OUT["📋 Failure Classification Result"]
     end
 
-    subgraph Phase3 ["Phase 3: FSM Policy & Compliance Guardrails"]
-        GUARD{"Invoice >= ₹25k OR Retries >= 2?"}
-        TRANS{"Is Failure Transient (e.g. 504 Timeout)?"}
-        HARD{"Is Mandate Expired / Revoked?"}
-        RBI_CHECK{"RBI Pre-Debit Notice Sent >= 24h Ago?"}
-        DUNNING_CAP{"Dunning Nudge Count < 2?"}
+    subgraph Phase3 ["🛡️ Phase 3: FSM Policy & Compliance Guardrails"]
+        GUARD{"⚖️ Invoice >= ₹25k OR Retries >= 2?"}
+        TRANS{"❓ Is Failure Transient (e.g. 504 Timeout)?"}
+        HARD{"❓ Is Mandate Expired / Revoked?"}
+        RBI_CHECK{"⏳ RBI Pre-Debit Notice Sent >= 24h Ago?"}
+        DUNNING_CAP{"💬 Dunning Nudge Count < 2?"}
     end
 
-    subgraph Recovery ["Phase 4: 3-Tier Execution Engine"]
-        T1["Tier 1: Telemetry-based Off-Peak Retry (SCHEDULED_RETRY)"]
-        T2["Tier 2: Provision UPI AutoPay Mandate Link + WhatsApp Nudge (AWAITING_UPI_AUTH)"]
-        T3["Tier 3: Merchant HITL Approval Queue (ESCALATED_HITL)"]
+    subgraph Recovery ["⚡ Phase 4: 3-Tier Execution Engine"]
+        T1["⏳ Tier 1: Telemetry-based Off-Peak Retry (SCHEDULED_RETRY)"]
+        T2["📲 Tier 2: Provision UPI AutoPay Mandate Link + WhatsApp (AWAITING_UPI_AUTH)"]
+        T3["🚨 Tier 3: Merchant HITL Approval Queue (ESCALATED_HITL)"]
     end
 
-    subgraph Resolution ["Phase 5: Resolution, Merchant Handshake & Audit"]
-        KILL{"Customer Clicked Cancel Subscription?"}
-        RES["Payment Healed / Authorized (RESOLVED)"]
-        EXH["72h Expired / Customer Cancelled (EXHAUSTED)"]
-        DISPATCH["Merchant Webhook Dispatcher: Emit razorfinops.payment.recovered"]
-        LEDGER[("Append-Only Cryptographic Audit Ledger")]
-        UNLOCK["Release Task Row Lock"]
+    subgraph Resolution ["📜 Phase 5: Resolution, Merchant Handshake & Audit"]
+        KILL["🛑 Customer Clicked Cancel Subscription?"]
+        RES["🎉 Payment Healed / Authorized (RESOLVED)"]
+        EXH["⌛ 72h Expired / Customer Cancelled (EXHAUSTED)"]
+        DISPATCH["📡 Dispatch Signed Webhook: razorfinops.payment.recovered"]
+        LEDGER[("🔗 Append-Only Cryptographic Audit Ledger")]
+        UNLOCK["🔓 Release Task Row Lock"]
     end
 
     WH --> SIG
-    SIG -- "Invalid" --> REJ["HTTP 401 Unauthorized (Reject Payload)"]
+    SIG -- "Invalid" --> REJ["🚫 HTTP 401 Unauthorized (Reject Payload)"]
     SIG -- "Valid" --> IDEM
-    IDEM -- "Duplicate" --> IDEM_RES["HTTP 200 OK (Return Idempotent Task)"]
+    IDEM -- "Duplicate" --> IDEM_RES["⏹️ HTTP 200 OK (Return Idempotent Task)"]
     IDEM -- "New Event" --> ING_LOG
     ING_LOG --> LOCK
-    LOCK -- "Locked (Concurrent)" --> WAIT_RES["Wait / Skip Duplicate Execution"]
+    LOCK -- "Locked (Concurrent)" --> WAIT_RES["⏸️ Wait / Skip Duplicate Execution"]
     LOCK -- "Lock Acquired" --> DIAG
     DIAG --> KNOWN
     KNOWN -- "Yes" --> RULE_ENG
@@ -73,7 +73,7 @@ flowchart TD
     GUARD -- "No" --> TRANS
     TRANS -- "Yes (Soft Fail / Outage)" --> RBI_CHECK
     RBI_CHECK -- "Yes (>= 24h)" --> T1
-    RBI_CHECK -- "No (< 24h)" --> T1_WAIT["Enforce T + 24h RBI Pre-Debit Notice Window"]
+    RBI_CHECK -- "No (< 24h)" --> T1_WAIT["⏳ Enforce T + 24h RBI Pre-Debit Notice Window"]
     T1_WAIT --> T1
 
     TRANS -- "No" --> HARD
@@ -83,11 +83,48 @@ flowchart TD
     HARD -- "No" --> T3
 
     T1 --> |"Execute Debit Retry"| RES
-    T2 --> CUST_ACT{"Customer Action"}
+    T2 --> CUST_ACT{"👆 Customer Action"}
     CUST_ACT -- "Signs UPI Mandate" --> RES
     CUST_ACT -- "72h Timeout" --> EXH
     CUST_ACT -- "Clicks Cancel Subscription" --> KILL
     KILL --> |"Trigger Dunning Kill Switch"| EXH
+
+    RES --> DISPATCH
+    DISPATCH --> LEDGER
+    LEDGER --> UNLOCK
+    EXH --> UNLOCK
+
+    %% Custom Cyberpunk Neon Styling
+    classDef gateway fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#fff
+    classDef verifier fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#e0f2fe
+    classDef decision fill:#312e81,stroke:#a5b4fc,stroke-width:2px,color:#fff
+    classDef ai fill:#4c1d95,stroke:#c084fc,stroke-width:2px,color:#fff,font-weight:bold
+    classDef lock fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#fff
+    classDef tier1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff
+    classDef tier2 fill:#581c87,stroke:#e879f9,stroke-width:2px,color:#fff
+    classDef tier3 fill:#881337,stroke:#fb7185,stroke-width:2px,color:#fff
+    classDef resolved fill:#047857,stroke:#10b981,stroke-width:3px,color:#fff,font-weight:bold
+    classDef audit fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fff
+
+    class WH gateway
+    class SIG,ING_LOG,DISPATCH verifier
+    class IDEM,KNOWN,GUARD,TRANS,HARD,RBI_CHECK,DUNNING_CAP,CUST_ACT,KILL decision
+    class LLM_PARSER,RULE_ENG ai
+    class LOCK,UNLOCK lock
+    class T1,T1_WAIT tier1
+    class T2 tier2
+    class T3 tier3
+    class RES resolved
+    class LEDGER,EXH audit
+
+    style Gateway fill:#131238,stroke:#818cf8,stroke-width:2px,color:#818cf8
+    style Phase1 fill:#0b1329,stroke:#38bdf8,stroke-width:2px,color:#38bdf8
+    style Concurrency fill:#03291d,stroke:#34d399,stroke-width:2px,color:#34d399
+    style Phase2 fill:#1a0c36,stroke:#c084fc,stroke-width:2px,color:#c084fc
+    style Phase3 fill:#261803,stroke:#fbbf24,stroke-width:2px,color:#fbbf24
+    style Recovery fill:#270e38,stroke:#e879f9,stroke-width:2px,color:#e879f9
+    style Resolution fill:#06231a,stroke:#10b981,stroke-width:2px,color:#10b981
+```H
 
     T3 --> |"Merchant Approves UPI Switch"| T2
     T3 --> |"Merchant Overrides & Retries"| T1
