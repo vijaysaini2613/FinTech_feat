@@ -97,12 +97,21 @@ export class HybridFailureClassifier {
     const apiKey = process.env.GEMINI_API_KEY || '';
     if (!apiKey) return null;
 
+    // Sanitize input: Strip card numbers, emails, phone numbers, and prompt injection attempts (Rule 12 & Data Leak Protection)
+    const sanitizedCode = (rawErrorCode || '').replace(/\d{13,19}/g, '[REDACTED_CARD]').substring(0, 100);
+    const sanitizedText = (text || '')
+      .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '[REDACTED_EMAIL]')
+      .replace(/\+?\d{10,14}/g, '[REDACTED_PHONE]')
+      .replace(/\d{13,19}/g, '[REDACTED_CARD]')
+      .replace(/ignore\s+previous\s+instructions/gi, '')
+      .substring(0, 300);
+
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     const prompt = `You are an expert Indian banking failure classifier for Razorpay e-mandate and UPI AutoPay recurring payment drop-offs.
 Parse the following unstructured bank error details:
-Error Code: "${rawErrorCode}"
-Description: "${text}"
+Error Code: "${sanitizedCode}"
+Description: "${sanitizedText}"
 
 Classify into one of these exact categories:
 - "ISSUER_TIMEOUT" (network timeouts, 504 gateway error, NPCI switch down)

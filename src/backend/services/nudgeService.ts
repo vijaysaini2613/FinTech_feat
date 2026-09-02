@@ -122,8 +122,9 @@ export class NudgeService {
 
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
-    const prompt = `Write a high-converting, polite WhatsApp recovery message for an Indian customer.
-Customer Name: ${customerName}
+    const firstName = (customerName || 'Customer').split(' ')[0];
+    const prompt = `Write a high-converting, polite WhatsApp recovery message for an Indian subscriber.
+Subscriber First Name: ${firstName}
 Subscription Amount: ${amountStr}
 Merchant: ${merchantName}
 Action Link: ${mandateLink}

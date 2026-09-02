@@ -1,11 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      fontSize: {
+        'xs': ['0.8125rem', { lineHeight: '1.25rem' }],
+        'sm': ['0.9375rem', { lineHeight: '1.375rem' }],
+        'base': ['1.0625rem', { lineHeight: '1.625rem' }],
+        'lg': ['1.1875rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.3125rem', { lineHeight: '1.875rem' }],
+        '2xl': ['1.625rem', { lineHeight: '2.125rem' }],
+      },
       colors: {
         brand: {
           50: '#f0f7ff',

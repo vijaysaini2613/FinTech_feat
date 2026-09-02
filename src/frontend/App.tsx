@@ -13,6 +13,24 @@ import { ShieldCheck } from 'lucide-react';
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
   const [serverStatus, setServerStatus] = useState<'ONLINE' | 'OFFLINE'>('ONLINE');
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    return (localStorage.getItem('theme') as 'dark' | 'light') || 'dark';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    if (theme === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
   const [stats, setStats] = useState({
     totalRecoveredARR: 0,
     totalFailedVolume: 0,
@@ -163,15 +181,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-200">
       <Header
         serverStatus={serverStatus}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
         onOpenPolicy={() => setShowPolicyModal(true)}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="flex-1 max-w-[1600px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6">
         <MetricsOverview stats={stats} />
 
         {activeTab === 'overview' && (
@@ -228,14 +248,14 @@ export default function App() {
         />
       )}
 
-      <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <footer className="border-t border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-950 py-4 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div className="max-w-[1600px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
             <ShieldCheck className="w-4 h-4 text-blue-500" />
-            <span className="font-semibold text-slate-300">RazorFinOps Churn Healing Engine</span>
+            <span className="font-semibold text-slate-800 dark:text-slate-300">RazorFinOps Churn Healing Engine</span>
             <span>&bull; Track 03: Revenue Recovery</span>
           </div>
-          <span className="font-mono text-slate-400">Strict FSM Money Safety & Cryptographic Audit Ledger</span>
+          <span className="font-mono text-slate-500 dark:text-slate-400">Strict FSM Money Safety & Cryptographic Audit Ledger</span>
         </div>
       </footer>
     </div>
