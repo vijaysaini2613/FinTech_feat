@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
+import { HeroBanner } from './components/HeroBanner';
 import { MetricsOverview } from './components/MetricsOverview';
+import { RecentActivityFeed } from './components/RecentActivityFeed';
 import { BankHealthBar, BankTelemetryData } from './components/BankHealthBar';
 import { FSMWorkflowViewer } from './components/FSMWorkflowViewer';
 import { SimulationStudio } from './components/SimulationStudio';
@@ -31,6 +33,7 @@ export default function App() {
   const handleToggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
+
   const [stats, setStats] = useState({
     totalRecoveredARR: 0,
     totalFailedVolume: 0,
@@ -131,6 +134,8 @@ export default function App() {
         if (data.task) {
           setSelectedTaskId(data.task.task_id);
         }
+        fetchData();
+        return data;
       }
       fetchData();
     } catch (err) {
@@ -192,13 +197,31 @@ export default function App() {
       />
 
       <main className="flex-1 max-w-[1600px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-6">
-        <MetricsOverview stats={stats} />
-
+        {/* Overview Tab: Clean High-Level Dashboard */}
         {activeTab === 'overview' && (
           <div className="space-y-6">
+            <HeroBanner onGoToSimulator={() => setActiveTab('simulator')} />
+            <MetricsOverview stats={stats} />
+            <RecentActivityFeed
+              tasks={tasks}
+              onSelectTask={setSelectedTaskId}
+              onOpenCustomerResolution={handleOpenCustomerResolution}
+              onGoToTab={setActiveTab}
+            />
             <BankHealthBar telemetry={telemetry} onToggleOutage={handleToggleOutage} />
-            <FSMWorkflowViewer tasks={tasks} selectedTaskId={selectedTaskId} onSelectTask={setSelectedTaskId} />
-            <SimulationStudio onTriggerSimulation={handleTriggerSimulation} />
+          </div>
+        )}
+
+        {/* Focused Tab 2: Interactive Simulation Studio */}
+        {activeTab === 'simulator' && (
+          <div className="space-y-6">
+            <SimulationStudio onTriggerSimulation={handleTriggerSimulation} onGoToTab={setActiveTab} />
+          </div>
+        )}
+
+        {/* Focused Tab 3: HITL Review Queue */}
+        {activeTab === 'hitl' && (
+          <div className="space-y-6">
             <HITLReviewQueue
               tasks={tasks}
               onReviewDecision={handleReviewDecision}
@@ -207,28 +230,25 @@ export default function App() {
           </div>
         )}
 
-        {activeTab === 'hitl' && (
-          <HITLReviewQueue
-            tasks={tasks}
-            onReviewDecision={handleReviewDecision}
-            onOpenCustomerResolution={handleOpenCustomerResolution}
-          />
-        )}
-
+        {/* Focused Tab 4: FSM Live Pipeline */}
         {activeTab === 'fsm' && (
-          <FSMWorkflowViewer tasks={tasks} selectedTaskId={selectedTaskId} onSelectTask={setSelectedTaskId} />
+          <div className="space-y-6">
+            <FSMWorkflowViewer tasks={tasks} selectedTaskId={selectedTaskId} onSelectTask={setSelectedTaskId} />
+          </div>
         )}
 
-        {activeTab === 'simulator' && (
-          <SimulationStudio onTriggerSimulation={handleTriggerSimulation} />
-        )}
-
+        {/* Focused Tab 5: Audit Ledger */}
         {activeTab === 'ledger' && (
-          <AuditLedgerView ledger={ledger} />
+          <div className="space-y-6">
+            <AuditLedgerView ledger={ledger} />
+          </div>
         )}
 
+        {/* Focused Tab 6: Bank Telemetry Controller */}
         {activeTab === 'bank' && (
-          <BankHealthBar telemetry={telemetry} onToggleOutage={handleToggleOutage} />
+          <div className="space-y-6">
+            <BankHealthBar telemetry={telemetry} onToggleOutage={handleToggleOutage} />
+          </div>
         )}
       </main>
 

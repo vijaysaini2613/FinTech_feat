@@ -108,8 +108,14 @@ export const FSMWorkflowViewer: React.FC<FSMWorkflowViewerProps> = ({ tasks, sel
 
           <div>
             <span className="text-slate-600 dark:text-slate-300 block mb-1 font-medium">Compliance & Locks:</span>
-            <span className="text-emerald-600 dark:text-emerald-300 block font-bold">&check; RBI 24h Pre-Debit Offset</span>
-            <span className="text-emerald-600 dark:text-emerald-300 block font-bold mt-0.5">&check; SELECT FOR UPDATE Task Lock</span>
+            <span className="text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 font-bold">
+              <span>✓</span>
+              <span>RBI 24h Pre-Debit Offset</span>
+            </span>
+            <span className="text-emerald-600 dark:text-emerald-400 flex items-center space-x-1 font-bold mt-0.5">
+              <span>✓</span>
+              <span>SELECT FOR UPDATE Task Lock</span>
+            </span>
             <span className="text-slate-500 dark:text-slate-400 block text-[10px] mt-1 font-mono">
               Created: {new Date(selectedTask.created_at).toLocaleTimeString()}
             </span>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, Sparkles, Terminal, Coins, ArrowUpRight } from 'lucide-react';
+import { Play, Sparkles, Terminal, Coins, ArrowUpRight, CheckCircle, ArrowRight } from 'lucide-react';
 
 interface SimulationStudioProps {
   onTriggerSimulation: (params: {
@@ -7,19 +7,30 @@ interface SimulationStudioProps {
     customAmount?: number;
     customErrorCode?: string;
     customErrorDesc?: string;
-  }) => Promise<void>;
+  }) => Promise<any>;
+  onGoToTab?: (tab: string) => void;
 }
 
-export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSimulation }) => {
+export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSimulation, onGoToTab }) => {
   const [loading, setLoading] = useState(false);
+  const [lastTriggerResult, setLastTriggerResult] = useState<any | null>(null);
   const [customAmount, setCustomAmount] = useState<number>(12500);
   const [customErrorCode, setCustomErrorCode] = useState<string>('GATEWAY_ERROR');
   const [customErrorDesc, setCustomErrorDesc] = useState<string>('HDFC0092: Customer debit limit reached under RBI e-mandate guidelines');
 
   const handlePreset = async (presetName: string) => {
     setLoading(true);
+    setLastTriggerResult(null);
     try {
-      await onTriggerSimulation({ preset: presetName });
+      const res = await onTriggerSimulation({ preset: presetName });
+      if (res && res.task) {
+        setLastTriggerResult({
+          success: true,
+          preset: presetName,
+          task: res.task,
+          message: res.message || 'Simulation event created & FSM pipeline initialized',
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -28,12 +39,21 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
   const handleCustomTrigger = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setLastTriggerResult(null);
     try {
-      await onTriggerSimulation({
+      const res = await onTriggerSimulation({
         customAmount,
         customErrorCode,
         customErrorDesc,
       });
+      if (res && res.task) {
+        setLastTriggerResult({
+          success: true,
+          preset: 'CUSTOM_AI_EVALUATION',
+          task: res.task,
+          message: res.message || 'Custom payload classified by Gemini 2.5 Flash AI',
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -50,6 +70,45 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <p className="text-xs text-slate-600 dark:text-slate-400">Test Pay-by-Bank (UPI AutoPay), Programmable CBDC (e-Rupee), and Open Banking VRP rails live</p>
         </div>
       </div>
+
+      {/* Live Feedback Notification Banner */}
+      {lastTriggerResult && (
+        <div className="p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/40 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-fadeIn">
+          <div className="flex items-center space-x-3">
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border border-emerald-500/40 flex items-center justify-center shrink-0">
+              <CheckCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-extrabold text-xs text-emerald-800 dark:text-emerald-300 block">
+                🎉 Simulation Event Ingested & Processed!
+              </span>
+              <span className="text-[11px] text-slate-700 dark:text-slate-200 font-mono font-semibold block mt-0.5">
+                Task ID: {lastTriggerResult.task?.task_id} &bull; State: <strong className="text-blue-600 dark:text-blue-400">{lastTriggerResult.task?.current_state}</strong>
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2 shrink-0">
+            {lastTriggerResult.task?.current_state === 'ESCALATED_HITL' ? (
+              <button
+                onClick={() => onGoToTab?.('hitl')}
+                className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-rose-600/30 flex items-center space-x-1"
+              >
+                <span>Review in HITL Queue</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            ) : (
+              <button
+                onClick={() => onGoToTab?.('fsm')}
+                className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-blue-600/30 flex items-center space-x-1"
+              >
+                <span>View FSM Pipeline</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Preset Buttons Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -70,10 +129,10 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <button
             disabled={loading}
             onClick={() => handlePreset('TIER_1_SOFT_FAIL')}
-            className="w-full py-2 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-semibold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-blue-600/20"
+            className="w-full py-2.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-blue-600/20 active:scale-95"
           >
             <Play className="w-3.5 h-3.5" />
-            <span>Simulate Tier 1 Telemetry Retry</span>
+            <span>{loading ? 'Triggering Simulation...' : 'Simulate Tier 1 Telemetry Retry'}</span>
           </button>
         </div>
 
@@ -94,10 +153,10 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <button
             disabled={loading}
             onClick={() => handlePreset('TIER_2_UPI_SWITCH')}
-            className="w-full py-2 px-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-purple-600/20"
+            className="w-full py-2.5 px-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-bold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-purple-600/20 active:scale-95"
           >
             <Play className="w-3.5 h-3.5" />
-            <span>Simulate Tier 2 Pay-by-Bank Switch</span>
+            <span>{loading ? 'Triggering Simulation...' : 'Simulate Tier 2 Pay-by-Bank Switch'}</span>
           </button>
         </div>
 
@@ -118,10 +177,10 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <button
             disabled={loading}
             onClick={() => handlePreset('TIER_3_HIGH_VALUE_HITL')}
-            className="w-full py-2 px-3 bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-semibold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-rose-600/20"
+            className="w-full py-2.5 px-3 bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-bold text-xs flex items-center justify-center space-x-1.5 transition shadow-md shadow-rose-600/20 active:scale-95"
           >
             <Play className="w-3.5 h-3.5" />
-            <span>Simulate Tier 3 HITL Guardrail</span>
+            <span>{loading ? 'Triggering Simulation...' : 'Simulate Tier 3 HITL Guardrail'}</span>
           </button>
         </div>
       </div>
@@ -141,7 +200,7 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <button
             disabled={loading}
             onClick={() => handlePreset('CBDC_SETTLEMENT_RAIL')}
-            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center space-x-1 transition shrink-0"
+            className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg flex items-center space-x-1 transition shrink-0 active:scale-95"
           >
             <span>Trigger CBDC</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -161,7 +220,7 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
           <button
             disabled={loading}
             onClick={() => handlePreset('OPEN_BANKING_VRP_RAIL')}
-            className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-lg flex items-center space-x-1 transition shrink-0"
+            className="px-3.5 py-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-lg flex items-center space-x-1 transition shrink-0 active:scale-95"
           >
             <span>Trigger VRP</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -214,7 +273,7 @@ export const SimulationStudio: React.FC<SimulationStudioProps> = ({ onTriggerSim
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-cyan-600/20"
+          className="w-full py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xs rounded-lg transition shadow-md shadow-cyan-600/20 active:scale-95"
         >
           {loading ? 'Processing Webhook Simulation...' : 'Fire Custom Webhook Payload & Evaluate Gemini AI Classifier'}
         </button>

@@ -24,7 +24,7 @@ const ReviewDecisionSchema = z.object({
 });
 
 const SimulationTriggerSchema = z.object({
-  preset: z.enum(['TIER_1_SOFT_FAIL', 'TIER_2_MANDATE_EXPIRED', 'TIER_3_HIGH_VALUE_HITL', 'CBDC_SETTLEMENT_RAIL', 'OPEN_BANKING_VRP_RAIL']).optional(),
+  preset: z.enum(['TIER_1_SOFT_FAIL', 'TIER_2_MANDATE_EXPIRED', 'TIER_2_UPI_SWITCH', 'TIER_3_HIGH_VALUE_HITL', 'CBDC_SETTLEMENT_RAIL', 'OPEN_BANKING_VRP_RAIL']).optional(),
   customAmount: z.number().min(1).max(500000).optional(),
   customErrorCode: z.string().max(100).optional(),
   customErrorDesc: z.string().max(500).optional(),
@@ -346,7 +346,7 @@ apiRouter.post('/v1/simulation/trigger', async (req: Request, res: Response) => 
       rawErrorCode = 'BAD_REQUEST_PAYMENT_TIMED_OUT';
       rawErrorDescription = 'NPCI switch timeout during recurring mandate debit';
       mandateId = 'man_card_hdfc_881';
-    } else if (preset === 'TIER_2_MANDATE_EXPIRED') {
+    } else if (preset === 'TIER_2_MANDATE_EXPIRED' || preset === 'TIER_2_UPI_SWITCH') {
       amount = 8900;
       rawErrorCode = 'TOKEN_REVOKED_OR_EXPIRED';
       rawErrorDescription = 'RBI e-mandate card token expired or deleted by issuing bank';

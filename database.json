@@ -30,7 +30,7 @@
       "customer_id": "cust_rajesh_verma",
       "customer_email": "rajesh.verma@example.com",
       "customer_phone": "+919812345678",
-      "payment_rail": "CARD_MANDATE",
+      "payment_rail": "UPI_AUTOPAY",
       "bank_bin": "SBI",
       "status": "ACTIVE",
       "max_debit_limit": 50000,
@@ -603,6 +603,354 @@
       "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
       "classified_category": "LIMIT_EXCEEDED",
       "ingested_at": "2026-09-02T11:34:46.874Z"
+    },
+    "test_evt_idempotent_1788350733523": {
+      "event_id": "test_evt_idempotent_1788350733523",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_test_001",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:05:33.523Z"
+    },
+    "test_evt_tier2_1788350733557": {
+      "event_id": "test_evt_tier2_1788350733557",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_test_002",
+      "amount": 8500,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T12:05:33.557Z"
+    },
+    "test_evt_tier3_1788350733616": {
+      "event_id": "test_evt_tier3_1788350733616",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_test_003",
+      "amount": 45000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice ₹45,000 exceeds debit limit",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:05:33.616Z"
+    },
+    "event_sim_1788350928456": {
+      "event_id": "event_sim_1788350928456",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_9794",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:08:48.456Z"
+    },
+    "event_sim_1788350929722": {
+      "event_id": "event_sim_1788350929722",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_4745",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:08:49.722Z"
+    },
+    "event_sim_1788350932243": {
+      "event_id": "event_sim_1788350932243",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_2273",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:08:52.243Z"
+    },
+    "event_sim_1788351160795": {
+      "event_id": "event_sim_1788351160795",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_7137",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:12:40.795Z"
+    },
+    "event_sim_1788351409691": {
+      "event_id": "event_sim_1788351409691",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_5020",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:16:49.691Z"
+    },
+    "event_sim_1788351409763": {
+      "event_id": "event_sim_1788351409763",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_1443",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:16:49.763Z"
+    },
+    "event_sim_1788351559640": {
+      "event_id": "event_sim_1788351559640",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_9471",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:19:19.640Z"
+    },
+    "event_sim_1788351559707": {
+      "event_id": "event_sim_1788351559707",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_4597",
+      "amount": 8900,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired or deleted by issuing bank",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T12:19:19.707Z"
+    },
+    "event_sim_1788351559798": {
+      "event_id": "event_sim_1788351559798",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_3544",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:19:19.798Z"
+    },
+    "event_sim_1788351559860": {
+      "event_id": "event_sim_1788351559860",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_6014",
+      "amount": 12000,
+      "currency": "INR",
+      "raw_error_code": "CROSS_BORDER_CARD_DECLINE",
+      "raw_error_description": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail",
+      "classified_category": "UNKNOWN",
+      "ingested_at": "2026-09-02T12:19:19.860Z"
+    },
+    "event_sim_1788351560583": {
+      "event_id": "event_sim_1788351560583",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_6826",
+      "amount": 15000,
+      "currency": "INR",
+      "raw_error_code": "INTERCHANGE_FEE_CAP_EXCEEDED",
+      "raw_error_description": "Card interchange fee cap exceeded. Migrating to Open Banking Variable Recurring Payments (VRP)",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:19:20.584Z"
+    },
+    "event_sim_1788351593213": {
+      "event_id": "event_sim_1788351593213",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_9891",
+      "amount": 8900,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired or deleted by issuing bank",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T12:19:53.213Z"
+    },
+    "event_sim_1788352478551": {
+      "event_id": "event_sim_1788352478551",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_1266",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:34:38.551Z"
+    },
+    "event_sim_1788352497948": {
+      "event_id": "event_sim_1788352497948",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_1292",
+      "amount": 8900,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired or deleted by issuing bank",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T12:34:57.948Z"
+    },
+    "event_sim_1788352672591": {
+      "event_id": "event_sim_1788352672591",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_1946",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T12:37:52.591Z"
+    },
+    "event_sim_1788352672663": {
+      "event_id": "event_sim_1788352672663",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_6523",
+      "amount": 8900,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired or deleted by issuing bank",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T12:37:52.663Z"
+    },
+    "event_sim_1788352672718": {
+      "event_id": "event_sim_1788352672718",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_3460",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:37:52.718Z"
+    },
+    "event_sim_1788352672775": {
+      "event_id": "event_sim_1788352672775",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_6078",
+      "amount": 12000,
+      "currency": "INR",
+      "raw_error_code": "CROSS_BORDER_CARD_DECLINE",
+      "raw_error_description": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail",
+      "classified_category": "UNKNOWN",
+      "ingested_at": "2026-09-02T12:37:52.775Z"
+    },
+    "event_sim_1788352673473": {
+      "event_id": "event_sim_1788352673473",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_7653",
+      "amount": 15000,
+      "currency": "INR",
+      "raw_error_code": "INTERCHANGE_FEE_CAP_EXCEEDED",
+      "raw_error_description": "Card interchange fee cap exceeded. Migrating to Open Banking Variable Recurring Payments (VRP)",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:37:53.473Z"
+    },
+    "event_sim_1788352673988": {
+      "event_id": "event_sim_1788352673988",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_4716",
+      "amount": 45000,
+      "currency": "INR",
+      "raw_error_code": "HDFC_ERR_9012",
+      "raw_error_description": "Mandate debit limit exceeded under RBI e-mandate circular guidelines",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:37:53.988Z"
+    },
+    "event_sim_1788352707851": {
+      "event_id": "event_sim_1788352707851",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_5728",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T12:38:27.852Z"
+    },
+    "event_sim_1788354237203": {
+      "event_id": "event_sim_1788354237203",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_6649",
+      "amount": 12000,
+      "currency": "INR",
+      "raw_error_code": "CROSS_BORDER_CARD_DECLINE",
+      "raw_error_description": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail",
+      "classified_category": "UNKNOWN",
+      "ingested_at": "2026-09-02T13:03:57.203Z"
+    },
+    "event_sim_1788354529657": {
+      "event_id": "event_sim_1788354529657",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "invoice_id": "inv_sim_4377",
+      "amount": 3500,
+      "currency": "INR",
+      "raw_error_code": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+      "raw_error_description": "NPCI switch timeout during recurring mandate debit",
+      "classified_category": "ISSUER_TIMEOUT",
+      "ingested_at": "2026-09-02T13:08:49.657Z"
+    },
+    "event_sim_1788354546201": {
+      "event_id": "event_sim_1788354546201",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "invoice_id": "inv_sim_8166",
+      "amount": 8900,
+      "currency": "INR",
+      "raw_error_code": "TOKEN_REVOKED_OR_EXPIRED",
+      "raw_error_description": "RBI e-mandate card token expired or deleted by issuing bank",
+      "classified_category": "MANDATE_EXPIRED",
+      "ingested_at": "2026-09-02T13:09:06.201Z"
+    },
+    "event_sim_1788354561970": {
+      "event_id": "event_sim_1788354561970",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_4126",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T13:09:21.970Z"
+    },
+    "event_sim_1788354596596": {
+      "event_id": "event_sim_1788354596596",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "invoice_id": "inv_sim_3973",
+      "amount": 75000,
+      "currency": "INR",
+      "raw_error_code": "RBI_MANDATE_LIMIT_EXCEEDED",
+      "raw_error_description": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular",
+      "classified_category": "LIMIT_EXCEEDED",
+      "ingested_at": "2026-09-02T13:09:56.596Z"
     }
   },
   "recovery_tasks": {
@@ -975,14 +1323,14 @@
       "event_id": "test_evt_tier3_1788344760498",
       "merchant_id": "merchant_rzp_default",
       "mandate_id": "man_upi_icici_112",
-      "current_state": "ESCALATED_HITL",
-      "retry_count": 0,
+      "current_state": "RESOLVED",
+      "retry_count": 1,
       "next_action_at": null,
-      "allocated_rail": null,
+      "allocated_rail": "BACKGROUND_RETRY",
       "recovery_payment_link": null,
-      "recovered_amount": 0,
+      "recovered_amount": 45000,
       "created_at": "2026-09-02T10:26:00.500Z",
-      "updated_at": "2026-09-02T10:26:00.510Z"
+      "updated_at": "2026-09-02T13:12:10.121Z"
     },
     "1ecd0b03-257d-4168-b69a-593da5407eac": {
       "task_id": "1ecd0b03-257d-4168-b69a-593da5407eac",
@@ -1143,28 +1491,28 @@
       "event_id": "event_sim_1788348885004",
       "merchant_id": "merchant_rzp_default",
       "mandate_id": "man_upi_icici_112",
-      "current_state": "ESCALATED_HITL",
-      "retry_count": 0,
+      "current_state": "RESOLVED",
+      "retry_count": 1,
       "next_action_at": null,
-      "allocated_rail": null,
+      "allocated_rail": "BACKGROUND_RETRY",
       "recovery_payment_link": null,
-      "recovered_amount": 0,
+      "recovered_amount": 75000,
       "created_at": "2026-09-02T11:34:45.009Z",
-      "updated_at": "2026-09-02T11:34:45.081Z"
+      "updated_at": "2026-09-02T13:12:11.545Z"
     },
     "af3bae3d-4984-479a-91db-e303ec76fd80": {
       "task_id": "af3bae3d-4984-479a-91db-e303ec76fd80",
       "event_id": "event_sim_1788348885186",
       "merchant_id": "merchant_rzp_default",
       "mandate_id": "man_upi_icici_112",
-      "current_state": "ESCALATED_HITL",
-      "retry_count": 0,
+      "current_state": "RESOLVED",
+      "retry_count": 1,
       "next_action_at": null,
-      "allocated_rail": null,
+      "allocated_rail": "BACKGROUND_RETRY",
       "recovery_payment_link": null,
-      "recovered_amount": 0,
+      "recovered_amount": 75000,
       "created_at": "2026-09-02T11:34:45.190Z",
-      "updated_at": "2026-09-02T11:34:45.217Z"
+      "updated_at": "2026-09-02T13:12:13.041Z"
     },
     "b884dd55-3a55-47e5-bdb3-5dab84f63d9d": {
       "task_id": "b884dd55-3a55-47e5-bdb3-5dab84f63d9d",
@@ -1249,9 +1597,3096 @@
       "recovered_amount": 0,
       "created_at": "2026-09-02T11:34:46.877Z",
       "updated_at": "2026-09-02T11:34:46.895Z"
+    },
+    "366beea9-e181-4a92-a739-9cb15218db37": {
+      "task_id": "366beea9-e181-4a92-a739-9cb15218db37",
+      "event_id": "test_evt_idempotent_1788350733523",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:05:33.548Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:05:33.527Z",
+      "updated_at": "2026-09-02T12:05:33.548Z"
+    },
+    "2ae7e850-fc6b-45c0-a6b1-f649c495f63f": {
+      "task_id": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+      "event_id": "test_evt_tier2_1788350733557",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_90817f99-5",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:05:33.560Z",
+      "updated_at": "2026-09-02T12:05:33.608Z"
+    },
+    "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb": {
+      "task_id": "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb",
+      "event_id": "test_evt_tier3_1788350733616",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "ESCALATED_HITL",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": null,
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:05:33.618Z",
+      "updated_at": "2026-09-02T12:05:33.636Z"
+    },
+    "215d0035-9af5-4ec8-b2b4-285055ab5f79": {
+      "task_id": "215d0035-9af5-4ec8-b2b4-285055ab5f79",
+      "event_id": "event_sim_1788350928456",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:08:48.487Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:08:48.460Z",
+      "updated_at": "2026-09-02T12:08:48.487Z"
+    },
+    "24364636-d8fa-4883-a3d5-43ec9732cf45": {
+      "task_id": "24364636-d8fa-4883-a3d5-43ec9732cf45",
+      "event_id": "event_sim_1788350929722",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:08:49.753Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:08:49.726Z",
+      "updated_at": "2026-09-02T12:08:49.753Z"
+    },
+    "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad": {
+      "task_id": "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad",
+      "event_id": "event_sim_1788350932243",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:08:52.268Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:08:52.247Z",
+      "updated_at": "2026-09-02T12:08:52.268Z"
+    },
+    "be4a8377-1f5f-4825-9866-1dfbb10635d9": {
+      "task_id": "be4a8377-1f5f-4825-9866-1dfbb10635d9",
+      "event_id": "event_sim_1788351160795",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:12:40.823Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:12:40.800Z",
+      "updated_at": "2026-09-02T12:12:40.823Z"
+    },
+    "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e": {
+      "task_id": "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e",
+      "event_id": "event_sim_1788351409691",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:16:49.725Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:16:49.697Z",
+      "updated_at": "2026-09-02T12:16:49.725Z"
+    },
+    "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7": {
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "event_id": "event_sim_1788351409763",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "RESOLVED",
+      "retry_count": 1,
+      "next_action_at": null,
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 75000,
+      "created_at": "2026-09-02T12:16:49.767Z",
+      "updated_at": "2026-09-02T13:28:16.067Z"
+    },
+    "08030973-a720-4f9c-b2ba-aff156cd5a80": {
+      "task_id": "08030973-a720-4f9c-b2ba-aff156cd5a80",
+      "event_id": "event_sim_1788351559640",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:19:19.680Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:19:19.646Z",
+      "updated_at": "2026-09-02T12:19:19.680Z"
+    },
+    "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973": {
+      "task_id": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+      "event_id": "event_sim_1788351559707",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_97d95cb5-7",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:19:19.713Z",
+      "updated_at": "2026-09-02T12:19:19.769Z"
+    },
+    "d7a6df7a-2a87-4388-a1a6-14a50375f65a": {
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "event_id": "event_sim_1788351559798",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "RESOLVED",
+      "retry_count": 1,
+      "next_action_at": null,
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 75000,
+      "created_at": "2026-09-02T12:19:19.803Z",
+      "updated_at": "2026-09-02T13:28:13.741Z"
+    },
+    "9e8c0cb3-4915-4159-85be-062a1ae648cc": {
+      "task_id": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+      "event_id": "event_sim_1788351559860",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_49024b21-7",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:19:19.866Z",
+      "updated_at": "2026-09-02T12:19:20.558Z"
+    },
+    "782f115b-61ca-4e80-8e74-7237fda86ffa": {
+      "task_id": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+      "event_id": "event_sim_1788351560583",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_e941d950-6",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:19:20.588Z",
+      "updated_at": "2026-09-02T12:19:21.064Z"
+    },
+    "57b07e12-0edc-49a1-8f77-8d59088114f8": {
+      "task_id": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+      "event_id": "event_sim_1788351593213",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_24a5cedb-c",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:19:53.219Z",
+      "updated_at": "2026-09-02T12:19:53.297Z"
+    },
+    "fbfb2da1-1856-49ad-8c94-468e9c0a3605": {
+      "task_id": "fbfb2da1-1856-49ad-8c94-468e9c0a3605",
+      "event_id": "event_sim_1788352478551",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:34:38.588Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:34:38.557Z",
+      "updated_at": "2026-09-02T12:34:38.588Z"
+    },
+    "eb3375b0-7d30-4f16-8489-34cb5d630d6f": {
+      "task_id": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+      "event_id": "event_sim_1788352497948",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_4221fad4-5",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:34:57.953Z",
+      "updated_at": "2026-09-02T12:34:57.990Z"
+    },
+    "116d334f-a836-46ef-b4a0-2fa6af460232": {
+      "task_id": "116d334f-a836-46ef-b4a0-2fa6af460232",
+      "event_id": "event_sim_1788352672591",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "SCHEDULED_RETRY",
+      "retry_count": 0,
+      "next_action_at": "2026-09-03T12:37:52.624Z",
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:37:52.596Z",
+      "updated_at": "2026-09-02T12:37:52.624Z"
+    },
+    "f28b4593-a439-402f-a6ca-804a75b54ad9": {
+      "task_id": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+      "event_id": "event_sim_1788352672663",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_03007420-d",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:37:52.669Z",
+      "updated_at": "2026-09-02T12:37:52.696Z"
+    },
+    "a9dae3ca-701c-44cb-8a85-cb57cb076e0d": {
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "event_id": "event_sim_1788352672718",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "RESOLVED",
+      "retry_count": 1,
+      "next_action_at": null,
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 75000,
+      "created_at": "2026-09-02T12:37:52.723Z",
+      "updated_at": "2026-09-02T13:28:12.162Z"
+    },
+    "02746f91-7edf-462a-8a5f-87d3554e49e2": {
+      "task_id": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+      "event_id": "event_sim_1788352672775",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_f992e931-6",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:37:52.781Z",
+      "updated_at": "2026-09-02T12:37:53.451Z"
+    },
+    "d21cf418-5112-425a-9a75-9d7957d493ba": {
+      "task_id": "d21cf418-5112-425a-9a75-9d7957d493ba",
+      "event_id": "event_sim_1788352673473",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_6bb4ef4f-3",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:37:53.478Z",
+      "updated_at": "2026-09-02T12:37:53.968Z"
+    },
+    "8d958cf7-a0dd-4782-ac30-8a657ba00c60": {
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "event_id": "event_sim_1788352673988",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "EXHAUSTED",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": null,
+      "recovery_payment_link": null,
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T12:37:53.994Z",
+      "updated_at": "2026-09-02T13:28:01.244Z"
+    },
+    "1243feda-c00a-4f18-b594-4e655c1c2004": {
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "event_id": "event_sim_1788352707851",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "RESOLVED",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": null,
+      "recovery_payment_link": null,
+      "recovered_amount": 75000,
+      "created_at": "2026-09-02T12:38:27.857Z",
+      "updated_at": "2026-09-02T13:12:43.715Z"
+    },
+    "d2ec13e6-0424-4539-bdd9-856520c28354": {
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "event_id": "event_sim_1788354237203",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "RESOLVED",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_8a98cf3a-f",
+      "recovered_amount": 12000,
+      "created_at": "2026-09-02T13:03:57.210Z",
+      "updated_at": "2026-09-02T13:04:43.345Z"
+    },
+    "8722add9-12a5-462c-a0b2-23bf9533c82b": {
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "event_id": "event_sim_1788354529657",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_hdfc_881",
+      "current_state": "RESOLVED",
+      "retry_count": 1,
+      "next_action_at": null,
+      "allocated_rail": "BACKGROUND_RETRY",
+      "recovery_payment_link": null,
+      "recovered_amount": 3500,
+      "created_at": "2026-09-02T13:08:49.663Z",
+      "updated_at": "2026-09-02T13:08:53.340Z"
+    },
+    "9bbdd21e-6a8d-463e-a145-4883be05af44": {
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "event_id": "event_sim_1788354546201",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_card_sbi_904",
+      "current_state": "RESOLVED",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_9a5b9df0-6",
+      "recovered_amount": 8900,
+      "created_at": "2026-09-02T13:09:06.208Z",
+      "updated_at": "2026-09-02T13:09:09.890Z"
+    },
+    "5ec3504a-ad47-4507-ab21-024c88259cd4": {
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "event_id": "event_sim_1788354561970",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "AWAITING_UPI_AUTH",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_d12ab15a-f",
+      "recovered_amount": 0,
+      "created_at": "2026-09-02T13:09:21.976Z",
+      "updated_at": "2026-09-02T13:11:58.631Z"
+    },
+    "a7945d71-ff65-42ae-993d-c67988e344cb": {
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "event_id": "event_sim_1788354596596",
+      "merchant_id": "merchant_rzp_default",
+      "mandate_id": "man_upi_icici_112",
+      "current_state": "RESOLVED",
+      "retry_count": 0,
+      "next_action_at": null,
+      "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+      "recovery_payment_link": "https://rzp.io/i/autopay_sub_link_3a5d0d90-0",
+      "recovered_amount": 75000,
+      "created_at": "2026-09-02T13:09:56.603Z",
+      "updated_at": "2026-09-02T13:10:00.294Z"
     }
   },
   "recovery_audit_ledger": [
+    {
+      "entry_id": "e3b4ca95-9893-4f4f-9bf3-e3cb7c4ec026",
+      "recorded_at": "2026-09-02T13:28:16.081Z",
+      "hash": "hash_000000005da25627",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "dadfc3fd5b7b0e077f77d5efcf21d4dcbbff7496befec90a17137b0f9ada29f6",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788355696081",
+          "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_1443",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:28:16.081Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "b690f5e8-52ef-4f05-b70b-02ae0693afc5",
+      "recorded_at": "2026-09-02T13:28:16.074Z",
+      "hash": "hash_0000000031d3f484",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_5bc627f0-12b",
+        "retryCount": 1,
+        "amountRecovered": 75000
+      }
+    },
+    {
+      "entry_id": "5ffc7532-6eab-4c31-a45b-07db16db164a",
+      "recorded_at": "2026-09-02T13:28:16.060Z",
+      "hash": "hash_000000001d21914d",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "5feee64d-63ff-4bd1-b858-228eacbcb53d",
+      "recorded_at": "2026-09-02T13:28:13.755Z",
+      "hash": "hash_000000004a9b1142",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "5cd279e1e8e778d903f68e2505683726c925a32e761af81b30a29afbe468af45",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788355693755",
+          "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_3544",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:28:13.755Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "56316f36-4f5d-41d0-851a-e4cc3fe7609f",
+      "recorded_at": "2026-09-02T13:28:13.748Z",
+      "hash": "hash_0000000033e04680",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_ecf1cc6f-0d1",
+        "retryCount": 1,
+        "amountRecovered": 75000
+      }
+    },
+    {
+      "entry_id": "79893a4b-ebad-494a-acc3-9b15519efcf7",
+      "recorded_at": "2026-09-02T13:28:13.733Z",
+      "hash": "hash_000000003f3d8226",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "ec3554cd-00ca-4462-9060-821d0af094a9",
+      "recorded_at": "2026-09-02T13:28:12.174Z",
+      "hash": "hash_00000000068d34b9",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "c75077619c9f56762a1552175066263b4fff0b83ca3bd9a0fec5a7ca9354005d",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788355692174",
+          "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_3460",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:28:12.174Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "33d3d594-622a-4f6a-97f9-1001da933ebd",
+      "recorded_at": "2026-09-02T13:28:12.168Z",
+      "hash": "hash_0000000026253969",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_2e9e7c25-a37",
+        "retryCount": 1,
+        "amountRecovered": 75000
+      }
+    },
+    {
+      "entry_id": "f75bc704-909f-4498-957c-d3143a11c86f",
+      "recorded_at": "2026-09-02T13:28:12.155Z",
+      "hash": "hash_000000004bed8961",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "8b0744b8-91ce-4ebf-80cc-cf23bdf67ba4",
+      "recorded_at": "2026-09-02T13:28:01.251Z",
+      "hash": "hash_0000000034040433",
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "EXHAUSTED",
+      "action_type": "HITL_REJECTED_HALT",
+      "metadata": {
+        "decision": "CANCEL"
+      }
+    },
+    {
+      "entry_id": "05553b78-a95b-479c-8e60-bab31bcc91d5",
+      "recorded_at": "2026-09-02T13:12:43.741Z",
+      "hash": "hash_0000000038139641",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "6d3c98c17543df149f03cc862b96e80dd6ddf80983f5c2456591810d14e7e4c2",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354763739",
+          "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_5728",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": null,
+          "recovered_at": "2026-09-02T13:12:43.739Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "64fd4333-6937-4586-9414-5747ccf33e0b",
+      "recorded_at": "2026-09-02T13:12:43.731Z",
+      "hash": "hash_000000000cdeafe6",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "CUSTOMER",
+      "previous_state": "AWAITING_UPI_AUTH",
+      "new_state": "RESOLVED",
+      "action_type": "UPI_MANDATE_AUTHORIZED",
+      "metadata": {
+        "recoveredAmount": 75000,
+        "newRail": "UPI_AUTOPAY"
+      }
+    },
+    {
+      "entry_id": "7ca8475e-0051-4364-8e97-d13517630ada",
+      "recorded_at": "2026-09-02T13:12:13.052Z",
+      "hash": "hash_000000006194e990",
+      "task_id": "af3bae3d-4984-479a-91db-e303ec76fd80",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "e88b626f4a916486562989fe1b593fd7b6128a013594353a7a29616e1327392b",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354733052",
+          "task_id": "af3bae3d-4984-479a-91db-e303ec76fd80",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_8137",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:12:13.052Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "936f1885-c620-4fdb-a36a-8817112a470c",
+      "recorded_at": "2026-09-02T13:12:13.047Z",
+      "hash": "hash_0000000014f2ddf5",
+      "task_id": "af3bae3d-4984-479a-91db-e303ec76fd80",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_c2514fbe-1ce",
+        "retryCount": 1,
+        "amountRecovered": 75000
+      }
+    },
+    {
+      "entry_id": "8253d051-bce9-4760-a8e7-bd968bb84128",
+      "recorded_at": "2026-09-02T13:12:13.036Z",
+      "hash": "hash_0000000009a19fd5",
+      "task_id": "af3bae3d-4984-479a-91db-e303ec76fd80",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "4db5fe75-1396-4352-9dbd-6e48f34f0c6a",
+      "recorded_at": "2026-09-02T13:12:11.564Z",
+      "hash": "hash_00000000148846e0",
+      "task_id": "9ab18a3a-ac53-44b5-b61e-e4bd3c52f27e",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "144e6b65620b511366757ce2032508ee13fbde2638e95846454f954ed7c119e2",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354731563",
+          "task_id": "9ab18a3a-ac53-44b5-b61e-e4bd3c52f27e",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_7237",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:12:11.563Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "917655a0-7f09-48b2-b5a0-e8b701dc509a",
+      "recorded_at": "2026-09-02T13:12:11.555Z",
+      "hash": "hash_0000000070334a48",
+      "task_id": "9ab18a3a-ac53-44b5-b61e-e4bd3c52f27e",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_09958154-ae9",
+        "retryCount": 1,
+        "amountRecovered": 75000
+      }
+    },
+    {
+      "entry_id": "ddc39bd0-bf74-4539-9872-27301c230224",
+      "recorded_at": "2026-09-02T13:12:11.536Z",
+      "hash": "hash_000000003e2eb7c4",
+      "task_id": "9ab18a3a-ac53-44b5-b61e-e4bd3c52f27e",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "ae2fb8d8-d44d-4b27-8428-b65fe1866d2b",
+      "recorded_at": "2026-09-02T13:12:10.134Z",
+      "hash": "hash_000000007e18191a",
+      "task_id": "e369c6fe-eb78-4281-adca-b39b1a809b22",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "fb812ffe41c2bf8f337018b75b73a2793109b3f00e4b508be2eb603ebbf0b614",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354730133",
+          "task_id": "e369c6fe-eb78-4281-adca-b39b1a809b22",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_test_003",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 45000,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:12:10.133Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "e0045733-825a-4306-85c3-753f487ab1f7",
+      "recorded_at": "2026-09-02T13:12:10.128Z",
+      "hash": "hash_000000004824e435",
+      "task_id": "e369c6fe-eb78-4281-adca-b39b1a809b22",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_22df86a7-b53",
+        "retryCount": 1,
+        "amountRecovered": 45000
+      }
+    },
+    {
+      "entry_id": "abac8585-5f26-43b9-b04d-5dc18b98ed5c",
+      "recorded_at": "2026-09-02T13:12:10.114Z",
+      "hash": "hash_0000000011bec879",
+      "task_id": "e369c6fe-eb78-4281-adca-b39b1a809b22",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "HITL_MANUAL_RETRY_OVERRIDE",
+      "metadata": {
+        "decision": "RETRY_MANUAL"
+      }
+    },
+    {
+      "entry_id": "24bde89d-8c5c-4d26-bdb4-c96d70d2bc82",
+      "recorded_at": "2026-09-02T13:11:58.638Z",
+      "hash": "hash_000000007e21c188",
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "HITL_APPROVED_UPI_SWITCH",
+      "metadata": {
+        "decision": "APPROVE_UPI_SWITCH",
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_d12ab15a-f"
+      }
+    },
+    {
+      "entry_id": "e057840d-18fa-477b-a8e0-c6a65257ab8a",
+      "recorded_at": "2026-09-02T13:10:00.308Z",
+      "hash": "hash_000000002c4d5766",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "6fcfaa1f1163e942a8fbc077072b4fee4ef28ad165ebede3cfb381b7747d3992",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354600307",
+          "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_3973",
+          "mandate_id": "man_upi_icici_112",
+          "amount_recovered": 75000,
+          "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+          "recovered_at": "2026-09-02T13:10:00.307Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "1f4018c6-59a8-47ef-bd2b-b3020b36a888",
+      "recorded_at": "2026-09-02T13:10:00.302Z",
+      "hash": "hash_0000000025e1841f",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "CUSTOMER",
+      "previous_state": "AWAITING_UPI_AUTH",
+      "new_state": "RESOLVED",
+      "action_type": "UPI_MANDATE_AUTHORIZED",
+      "metadata": {
+        "recoveredAmount": 75000,
+        "newRail": "UPI_AUTOPAY"
+      }
+    },
+    {
+      "entry_id": "424abbec-1d38-4e89-bb66-4b3a0c89d9c3",
+      "recorded_at": "2026-09-02T13:09:59.081Z",
+      "hash": "hash_000000002b752d4b",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "MERCHANT_ADMIN",
+      "previous_state": "ESCALATED_HITL",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "HITL_APPROVED_UPI_SWITCH",
+      "metadata": {
+        "decision": "APPROVE_UPI_SWITCH",
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_3a5d0d90-0"
+      }
+    },
+    {
+      "entry_id": "8839fa98-903d-47b9-bad7-b39f0569e6be",
+      "recorded_at": "2026-09-02T13:09:56.641Z",
+      "hash": "hash_0000000075c4f481",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "8e3b107d-53dc-4a4c-ab1d-40abc5f27da5",
+      "recorded_at": "2026-09-02T13:09:56.630Z",
+      "hash": "hash_000000007dc48f73",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "48dc898b-146b-4bde-8306-8e7a2cb0ef7a",
+      "recorded_at": "2026-09-02T13:09:56.619Z",
+      "hash": "hash_000000005ad67c99",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "e46452ae-9edd-4b15-83ca-df51d20e5710",
+      "recorded_at": "2026-09-02T13:09:56.608Z",
+      "hash": "hash_000000001c5eb7b9",
+      "task_id": "a7945d71-ff65-42ae-993d-c67988e344cb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788354596596",
+        "invoiceId": "inv_sim_3973",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "de022ea2-ba47-460f-9568-02324f86c206",
+      "recorded_at": "2026-09-02T13:09:22.015Z",
+      "hash": "hash_000000001056e6fe",
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "07986516-1fd2-4c8e-b056-0a9a14d29b73",
+      "recorded_at": "2026-09-02T13:09:22.004Z",
+      "hash": "hash_0000000060abba66",
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "ca7b64f0-8f70-46a5-8853-36138ff4142d",
+      "recorded_at": "2026-09-02T13:09:21.993Z",
+      "hash": "hash_0000000066271c8b",
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "dd58a060-4d8b-444a-9972-4f0ff14f2bcf",
+      "recorded_at": "2026-09-02T13:09:21.982Z",
+      "hash": "hash_000000006f6cb545",
+      "task_id": "5ec3504a-ad47-4507-ab21-024c88259cd4",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788354561970",
+        "invoiceId": "inv_sim_4126",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "a2e39464-a94c-45f1-9a1b-b3e46084581a",
+      "recorded_at": "2026-09-02T13:09:09.906Z",
+      "hash": "hash_000000001e8a3eb8",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "2a6905a1422101c4a716da4a1452b0f796c426783652cbf1ed9f59a714024e68",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354549906",
+          "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_8166",
+          "mandate_id": "man_card_sbi_904",
+          "amount_recovered": 8900,
+          "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+          "recovered_at": "2026-09-02T13:09:09.906Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "d9d0c376-e000-4c7c-8af0-6bc7006afe3d",
+      "recorded_at": "2026-09-02T13:09:09.901Z",
+      "hash": "hash_000000002de06345",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "CUSTOMER",
+      "previous_state": "AWAITING_UPI_AUTH",
+      "new_state": "RESOLVED",
+      "action_type": "UPI_MANDATE_AUTHORIZED",
+      "metadata": {
+        "recoveredAmount": 8900,
+        "newRail": "UPI_AUTOPAY"
+      }
+    },
+    {
+      "entry_id": "d0d572be-83e6-41e0-a58e-4a5692569f3e",
+      "recorded_at": "2026-09-02T13:09:06.255Z",
+      "hash": "hash_00000000692b19bb",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_9a5b9df0-6",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788354546249_seq1",
+          "taskId": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,900.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_9a5b9df0-6",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_9a5b9df0-6",
+          "createdAt": "2026-09-02T13:09:06.249Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "5acd577b-586e-4e6e-af4a-a64ab3f1e9e3",
+      "recorded_at": "2026-09-02T13:09:06.243Z",
+      "hash": "hash_000000002c3ebc02",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "5ff2368d-bfdb-4e6f-b6ce-d6ce07417edf",
+      "recorded_at": "2026-09-02T13:09:06.230Z",
+      "hash": "hash_00000000127ff5bb",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired or deleted by issuing bank"
+      }
+    },
+    {
+      "entry_id": "124afd8b-c072-4fa7-9759-43b94fa82984",
+      "recorded_at": "2026-09-02T13:09:06.215Z",
+      "hash": "hash_0000000047f619a1",
+      "task_id": "9bbdd21e-6a8d-463e-a145-4883be05af44",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788354546201",
+        "invoiceId": "inv_sim_8166",
+        "amount": 8900
+      }
+    },
+    {
+      "entry_id": "2f0c52a1-47f4-46df-9527-bbb2ff6965cf",
+      "recorded_at": "2026-09-02T13:08:53.353Z",
+      "hash": "hash_000000000b1bdcba",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "40c070322e0fcca7ddc5533b7e788d6d53cfeab5d2b8a14b74d00f3b42e8e6c0",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354533353",
+          "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_4377",
+          "mandate_id": "man_card_hdfc_881",
+          "amount_recovered": 3500,
+          "allocated_rail": "BACKGROUND_RETRY",
+          "recovered_at": "2026-09-02T13:08:53.353Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "311ab36e-38cf-4e63-b5b3-575c9a3076b9",
+      "recorded_at": "2026-09-02T13:08:53.346Z",
+      "hash": "hash_000000006e35a4bd",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "SCHEDULED_RETRY",
+      "new_state": "RESOLVED",
+      "action_type": "RETRY_SUCCESSFUL",
+      "metadata": {
+        "paymentId": "pay_a7cba22a-d1f",
+        "retryCount": 1,
+        "amountRecovered": 3500
+      }
+    },
+    {
+      "entry_id": "51e5e535-4722-450e-a92f-c01ec68f4716",
+      "recorded_at": "2026-09-02T13:08:49.701Z",
+      "hash": "hash_0000000004f27ef4",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 98.2,
+          "status": "HEALTHY",
+          "active_circuit_breaker": false,
+          "last_updated": "2026-09-02T13:08:52.122Z"
+        },
+        "scheduledFor": "2026-09-03T13:08:49.697Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "a4ff23a9-67f3-4706-8ec9-3adc5787adc9",
+      "recorded_at": "2026-09-02T13:08:49.691Z",
+      "hash": "hash_0000000066d94ee8",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "a9933207-cc8b-4a3b-ad67-bc890bd6e246",
+      "recorded_at": "2026-09-02T13:08:49.679Z",
+      "hash": "hash_000000003acd5d46",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "55309183-3c46-4c85-9f91-ff3c9139389d",
+      "recorded_at": "2026-09-02T13:08:49.668Z",
+      "hash": "hash_0000000070e65764",
+      "task_id": "8722add9-12a5-462c-a0b2-23bf9533c82b",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788354529657",
+        "invoiceId": "inv_sim_4377",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "54b4885e-6101-42c1-ac59-511452ece7e3",
+      "recorded_at": "2026-09-02T13:04:43.372Z",
+      "hash": "hash_000000006c03163e",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "RESOLVED",
+      "new_state": "RESOLVED",
+      "action_type": "MERCHANT_OUTGOING_WEBHOOK_DISPATCHED",
+      "metadata": {
+        "merchantEndpoint": "https://merchant.example.com/api/webhooks/recovered",
+        "signature": "83fa7fc7667fafae48ad7fc75d87b12a8653f8226a022c717697de549b2611ce",
+        "payload": {
+          "event": "razorfinops.payment.recovered",
+          "event_id": "evt_rec_1788354283369",
+          "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+          "merchant_id": "merchant_rzp_default",
+          "invoice_id": "inv_sim_6649",
+          "mandate_id": "man_card_sbi_904",
+          "amount_recovered": 12000,
+          "allocated_rail": "UPI_AUTOPAY_MIGRATION",
+          "recovered_at": "2026-09-02T13:04:43.369Z",
+          "action": "REACTIVATE_SUBSCRIPTION_ACCESS"
+        }
+      }
+    },
+    {
+      "entry_id": "e80dba64-9f02-408a-94b3-cc66f2531e41",
+      "recorded_at": "2026-09-02T13:04:43.361Z",
+      "hash": "hash_000000000b280405",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "CUSTOMER",
+      "previous_state": "AWAITING_UPI_AUTH",
+      "new_state": "RESOLVED",
+      "action_type": "UPI_MANDATE_AUTHORIZED",
+      "metadata": {
+        "recoveredAmount": 12000,
+        "newRail": "UPI_AUTOPAY"
+      }
+    },
+    {
+      "entry_id": "c916a72e-3944-4544-9678-67519056dec1",
+      "recorded_at": "2026-09-02T13:03:57.753Z",
+      "hash": "hash_0000000004cddfb3",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_8a98cf3a-f",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788354237746_seq1",
+          "taskId": "d2ec13e6-0424-4539-bdd9-856520c28354",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹12,000.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_8a98cf3a-f",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_8a98cf3a-f",
+          "createdAt": "2026-09-02T13:03:57.747Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "8b0b910c-8652-48f1-9aa4-84a0c35b3107",
+      "recorded_at": "2026-09-02T13:03:57.739Z",
+      "hash": "hash_0000000054644247",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "UNKNOWN",
+          "isTransient": false,
+          "recommendedRail": "HITL_REVIEW",
+          "explanation": "Unrecognized error signature. Escalating for Human-In-The-Loop merchant review.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.6
+        }
+      }
+    },
+    {
+      "entry_id": "8b5c13fa-0b96-40a7-babb-542c17d29e02",
+      "recorded_at": "2026-09-02T13:03:57.227Z",
+      "hash": "hash_0000000008ea3fd1",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "CROSS_BORDER_CARD_DECLINE",
+        "rawDesc": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail"
+      }
+    },
+    {
+      "entry_id": "c2be3049-57ba-4d6c-9a9e-4b9eaa78654e",
+      "recorded_at": "2026-09-02T13:03:57.215Z",
+      "hash": "hash_000000001cee2a1e",
+      "task_id": "d2ec13e6-0424-4539-bdd9-856520c28354",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788354237203",
+        "invoiceId": "inv_sim_6649",
+        "amount": 12000
+      }
+    },
+    {
+      "entry_id": "af8fbbc7-4a6f-4e3b-8b1b-5928b3f84a72",
+      "recorded_at": "2026-09-02T12:38:27.907Z",
+      "hash": "hash_0000000034cbcabc",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "152a5c5b-1827-48cf-91bc-63a7203d1e27",
+      "recorded_at": "2026-09-02T12:38:27.893Z",
+      "hash": "hash_0000000012bf1f0d",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "32ecd338-1adc-4787-ab7b-6dbf44fe3420",
+      "recorded_at": "2026-09-02T12:38:27.879Z",
+      "hash": "hash_0000000004ecea1f",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "a6a0183a-55f6-4894-b627-cc026bba5557",
+      "recorded_at": "2026-09-02T12:38:27.865Z",
+      "hash": "hash_00000000461263ee",
+      "task_id": "1243feda-c00a-4f18-b594-4e655c1c2004",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352707851",
+        "invoiceId": "inv_sim_5728",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "379ad7e5-7066-4dc4-b871-a70ebeafab96",
+      "recorded_at": "2026-09-02T12:37:54.389Z",
+      "hash": "hash_0000000004abc3c3",
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹45000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Semantic Parser identified maximum mandate debit limit violation under RBI regulations.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.92
+        }
+      }
+    },
+    {
+      "entry_id": "b738c531-7f0d-4379-89b6-98465b542396",
+      "recorded_at": "2026-09-02T12:37:54.382Z",
+      "hash": "hash_0000000054a2db70",
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Semantic Parser identified maximum mandate debit limit violation under RBI regulations.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.92
+        }
+      }
+    },
+    {
+      "entry_id": "763b9a38-c508-4e44-bda6-88b5ffa6a8fe",
+      "recorded_at": "2026-09-02T12:37:54.011Z",
+      "hash": "hash_00000000399bd3b5",
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "HDFC_ERR_9012",
+        "rawDesc": "Mandate debit limit exceeded under RBI e-mandate circular guidelines"
+      }
+    },
+    {
+      "entry_id": "dd427ca0-e76e-433c-9985-a6b2db8f7385",
+      "recorded_at": "2026-09-02T12:37:54.000Z",
+      "hash": "hash_0000000023fef01f",
+      "task_id": "8d958cf7-a0dd-4782-ac30-8a657ba00c60",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352673988",
+        "invoiceId": "inv_sim_4716",
+        "amount": 45000
+      }
+    },
+    {
+      "entry_id": "3b83a513-109e-42c6-aad0-e841ba1104ae",
+      "recorded_at": "2026-09-02T12:37:53.973Z",
+      "hash": "hash_000000007cab54ab",
+      "task_id": "d21cf418-5112-425a-9a75-9d7957d493ba",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_6bb4ef4f-3",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788352673968_seq1",
+          "taskId": "d21cf418-5112-425a-9a75-9d7957d493ba",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919876543210",
+          "recipientEmail": "priya.sharma@example.com",
+          "messageText": "Hi priya sharma, your recurring subscription of ₹15,000.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_6bb4ef4f-3",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_6bb4ef4f-3",
+          "createdAt": "2026-09-02T12:37:53.968Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "442322c1-7135-4e5f-bc8a-629cf3b02ea0",
+      "recorded_at": "2026-09-02T12:37:53.964Z",
+      "hash": "hash_000000004d6deacd",
+      "task_id": "d21cf418-5112-425a-9a75-9d7957d493ba",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Semantic Parser identified maximum mandate debit limit violation under RBI regulations.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.92
+        }
+      }
+    },
+    {
+      "entry_id": "0939109a-9af0-44df-b601-218db5e49986",
+      "recorded_at": "2026-09-02T12:37:53.494Z",
+      "hash": "hash_00000000008be5ed",
+      "task_id": "d21cf418-5112-425a-9a75-9d7957d493ba",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "INTERCHANGE_FEE_CAP_EXCEEDED",
+        "rawDesc": "Card interchange fee cap exceeded. Migrating to Open Banking Variable Recurring Payments (VRP)"
+      }
+    },
+    {
+      "entry_id": "62d39dea-2e53-448f-aa6a-24e87b3155e8",
+      "recorded_at": "2026-09-02T12:37:53.484Z",
+      "hash": "hash_000000007fc0f846",
+      "task_id": "d21cf418-5112-425a-9a75-9d7957d493ba",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352673473",
+        "invoiceId": "inv_sim_7653",
+        "amount": 15000
+      }
+    },
+    {
+      "entry_id": "33944af3-08a0-4f46-9513-43ed2d6296bc",
+      "recorded_at": "2026-09-02T12:37:53.457Z",
+      "hash": "hash_0000000058ef5860",
+      "task_id": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_f992e931-6",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788352673451_seq1",
+          "taskId": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹12,000.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_f992e931-6",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_f992e931-6",
+          "createdAt": "2026-09-02T12:37:53.451Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "e22feb47-9d46-4121-ae36-147ae3b09b5c",
+      "recorded_at": "2026-09-02T12:37:53.446Z",
+      "hash": "hash_00000000663c3ee0",
+      "task_id": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "UNKNOWN",
+          "isTransient": false,
+          "recommendedRail": "HITL_REVIEW",
+          "explanation": "Unrecognized error signature. Escalating for Human-In-The-Loop merchant review.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.6
+        }
+      }
+    },
+    {
+      "entry_id": "91bde87d-5239-44f8-a90d-2a0c867dd967",
+      "recorded_at": "2026-09-02T12:37:52.798Z",
+      "hash": "hash_0000000009422c18",
+      "task_id": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "CROSS_BORDER_CARD_DECLINE",
+        "rawDesc": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail"
+      }
+    },
+    {
+      "entry_id": "4b8ca69e-5f09-4ad7-a18c-07aa49a17c33",
+      "recorded_at": "2026-09-02T12:37:52.786Z",
+      "hash": "hash_0000000060f795af",
+      "task_id": "02746f91-7edf-462a-8a5f-87d3554e49e2",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352672775",
+        "invoiceId": "inv_sim_6078",
+        "amount": 12000
+      }
+    },
+    {
+      "entry_id": "49147517-6c24-4b9c-9f8d-9f952e8ae647",
+      "recorded_at": "2026-09-02T12:37:52.756Z",
+      "hash": "hash_000000006de75fe8",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "9e9b6fcf-4c4b-437e-b15a-9314d17739b2",
+      "recorded_at": "2026-09-02T12:37:52.746Z",
+      "hash": "hash_0000000065ee8735",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "674e2181-2d3b-400c-a8e5-861e56e84008",
+      "recorded_at": "2026-09-02T12:37:52.738Z",
+      "hash": "hash_00000000233cd778",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "f53cf664-924f-4e2c-9e98-07bafc9f9a0e",
+      "recorded_at": "2026-09-02T12:37:52.729Z",
+      "hash": "hash_0000000052d9e8c1",
+      "task_id": "a9dae3ca-701c-44cb-8a85-cb57cb076e0d",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352672718",
+        "invoiceId": "inv_sim_3460",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "5b33c4c6-cbf3-41c7-a84a-fd8e38817cae",
+      "recorded_at": "2026-09-02T12:37:52.700Z",
+      "hash": "hash_000000000fa689d2",
+      "task_id": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_03007420-d",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788352672696_seq1",
+          "taskId": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,900.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_03007420-d",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_03007420-d",
+          "createdAt": "2026-09-02T12:37:52.696Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "20f9c0ad-023e-4aad-82a6-8d61b7c5ba24",
+      "recorded_at": "2026-09-02T12:37:52.691Z",
+      "hash": "hash_000000006af469c9",
+      "task_id": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "b1083aa4-344a-4fcf-b86d-fd8b830fa05a",
+      "recorded_at": "2026-09-02T12:37:52.683Z",
+      "hash": "hash_00000000374649c5",
+      "task_id": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired or deleted by issuing bank"
+      }
+    },
+    {
+      "entry_id": "820370d2-2c77-4d59-ae2c-f002da855e08",
+      "recorded_at": "2026-09-02T12:37:52.674Z",
+      "hash": "hash_0000000015d7bc1a",
+      "task_id": "f28b4593-a439-402f-a6ca-804a75b54ad9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352672663",
+        "invoiceId": "inv_sim_6523",
+        "amount": 8900
+      }
+    },
+    {
+      "entry_id": "cfa64e4b-8955-4c86-8c84-2d0d3a288fac",
+      "recorded_at": "2026-09-02T12:37:52.629Z",
+      "hash": "hash_000000006a92b4ef",
+      "task_id": "116d334f-a836-46ef-b4a0-2fa6af460232",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 98.2,
+          "status": "HEALTHY",
+          "active_circuit_breaker": false,
+          "last_updated": "2026-09-02T13:08:52.122Z"
+        },
+        "scheduledFor": "2026-09-03T12:37:52.624Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "9175287a-5066-484f-9ad8-38d399989a95",
+      "recorded_at": "2026-09-02T12:37:52.619Z",
+      "hash": "hash_0000000026fe9c3f",
+      "task_id": "116d334f-a836-46ef-b4a0-2fa6af460232",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "338d3c57-d792-4ad9-afdd-af4f8ecc8488",
+      "recorded_at": "2026-09-02T12:37:52.610Z",
+      "hash": "hash_0000000075f6b5ab",
+      "task_id": "116d334f-a836-46ef-b4a0-2fa6af460232",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "7c9e297e-96a8-47f9-9e5f-563ea999777f",
+      "recorded_at": "2026-09-02T12:37:52.601Z",
+      "hash": "hash_000000006c7c9f24",
+      "task_id": "116d334f-a836-46ef-b4a0-2fa6af460232",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352672591",
+        "invoiceId": "inv_sim_1946",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "16f8d4ab-46ee-4f17-9e86-5f4126550319",
+      "recorded_at": "2026-09-02T12:34:57.995Z",
+      "hash": "hash_00000000553ea380",
+      "task_id": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_4221fad4-5",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788352497989_seq1",
+          "taskId": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,900.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_4221fad4-5",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_4221fad4-5",
+          "createdAt": "2026-09-02T12:34:57.989Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "50ebe448-f758-4d60-85e5-00010093acae",
+      "recorded_at": "2026-09-02T12:34:57.982Z",
+      "hash": "hash_0000000013343d4b",
+      "task_id": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "f8c3cd0e-7aae-4ea9-881c-957035c01ef8",
+      "recorded_at": "2026-09-02T12:34:57.969Z",
+      "hash": "hash_000000006b5f019a",
+      "task_id": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired or deleted by issuing bank"
+      }
+    },
+    {
+      "entry_id": "c1a7e51f-5178-4cda-9520-bd3c78c9c173",
+      "recorded_at": "2026-09-02T12:34:57.958Z",
+      "hash": "hash_0000000031abac12",
+      "task_id": "eb3375b0-7d30-4f16-8489-34cb5d630d6f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352497948",
+        "invoiceId": "inv_sim_1292",
+        "amount": 8900
+      }
+    },
+    {
+      "entry_id": "a7eb0f75-a730-4c1c-a740-efe827856221",
+      "recorded_at": "2026-09-02T12:34:38.592Z",
+      "hash": "hash_0000000050123acc",
+      "task_id": "fbfb2da1-1856-49ad-8c94-468e9c0a3605",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 98.2,
+          "status": "HEALTHY",
+          "active_circuit_breaker": false,
+          "last_updated": "2026-09-02T13:08:52.122Z"
+        },
+        "scheduledFor": "2026-09-03T12:34:38.588Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "40776464-b0e9-4416-8a3d-2e6c6d4c0646",
+      "recorded_at": "2026-09-02T12:34:38.583Z",
+      "hash": "hash_00000000051f44f0",
+      "task_id": "fbfb2da1-1856-49ad-8c94-468e9c0a3605",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "e2582fb6-d57d-4a18-ab37-6e6e9194a46d",
+      "recorded_at": "2026-09-02T12:34:38.572Z",
+      "hash": "hash_00000000005b8484",
+      "task_id": "fbfb2da1-1856-49ad-8c94-468e9c0a3605",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "00929e44-7f4b-4d73-9d9b-f51e30ec6639",
+      "recorded_at": "2026-09-02T12:34:38.562Z",
+      "hash": "hash_00000000138aa44b",
+      "task_id": "fbfb2da1-1856-49ad-8c94-468e9c0a3605",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788352478551",
+        "invoiceId": "inv_sim_1266",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "74b7ae47-d66e-4bb2-b34f-0bae782cfcbe",
+      "recorded_at": "2026-09-02T12:19:53.302Z",
+      "hash": "hash_0000000076fcd677",
+      "task_id": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_24a5cedb-c",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788351593297_seq1",
+          "taskId": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,900.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_24a5cedb-c",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_24a5cedb-c",
+          "createdAt": "2026-09-02T12:19:53.297Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "3c9f437c-b801-4340-ad25-c4204d0e0da6",
+      "recorded_at": "2026-09-02T12:19:53.292Z",
+      "hash": "hash_0000000070c006c8",
+      "task_id": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "4966485d-afec-4b55-8be6-7c65eac667db",
+      "recorded_at": "2026-09-02T12:19:53.283Z",
+      "hash": "hash_000000007b7c70ad",
+      "task_id": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired or deleted by issuing bank"
+      }
+    },
+    {
+      "entry_id": "4652c526-d05b-4368-8ef5-5aa3bbb9e1d8",
+      "recorded_at": "2026-09-02T12:19:53.254Z",
+      "hash": "hash_000000007ad49982",
+      "task_id": "57b07e12-0edc-49a1-8f77-8d59088114f8",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351593213",
+        "invoiceId": "inv_sim_9891",
+        "amount": 8900
+      }
+    },
+    {
+      "entry_id": "23a0c7fe-ae32-48ae-b408-68b402e636a6",
+      "recorded_at": "2026-09-02T12:19:21.070Z",
+      "hash": "hash_000000000a06b7c7",
+      "task_id": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_e941d950-6",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788351561064_seq1",
+          "taskId": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919876543210",
+          "recipientEmail": "priya.sharma@example.com",
+          "messageText": "Hi priya sharma, your recurring subscription of ₹15,000.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_e941d950-6",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_e941d950-6",
+          "createdAt": "2026-09-02T12:19:21.064Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "98639570-4ece-4b0a-9791-759e8bdef8d1",
+      "recorded_at": "2026-09-02T12:19:21.059Z",
+      "hash": "hash_000000003dd069f5",
+      "task_id": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Semantic Parser identified maximum mandate debit limit violation under RBI regulations.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.92
+        }
+      }
+    },
+    {
+      "entry_id": "05cce7e5-4e06-4b28-96f2-823a5c6fdbf0",
+      "recorded_at": "2026-09-02T12:19:20.604Z",
+      "hash": "hash_000000004bed7b81",
+      "task_id": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "INTERCHANGE_FEE_CAP_EXCEEDED",
+        "rawDesc": "Card interchange fee cap exceeded. Migrating to Open Banking Variable Recurring Payments (VRP)"
+      }
+    },
+    {
+      "entry_id": "0808ecb1-4233-421b-b481-29271d2ac7c6",
+      "recorded_at": "2026-09-02T12:19:20.593Z",
+      "hash": "hash_000000004dc52878",
+      "task_id": "782f115b-61ca-4e80-8e74-7237fda86ffa",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351560583",
+        "invoiceId": "inv_sim_6826",
+        "amount": 15000
+      }
+    },
+    {
+      "entry_id": "3e5e723d-e546-4ae0-adf5-2775c6f56873",
+      "recorded_at": "2026-09-02T12:19:20.562Z",
+      "hash": "hash_00000000106d5b9d",
+      "task_id": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_49024b21-7",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788351560558_seq1",
+          "taskId": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹12,000.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_49024b21-7",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_49024b21-7",
+          "createdAt": "2026-09-02T12:19:20.558Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "91e59e9e-a66a-4bc8-97bc-89443f7c4659",
+      "recorded_at": "2026-09-02T12:19:20.554Z",
+      "hash": "hash_0000000043031972",
+      "task_id": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "UNKNOWN",
+          "isTransient": false,
+          "recommendedRail": "HITL_REVIEW",
+          "explanation": "Unrecognized error signature. Escalating for Human-In-The-Loop merchant review.",
+          "classificationMethod": "LLM_SEMANTIC_PARSER",
+          "confidenceScore": 0.6
+        }
+      }
+    },
+    {
+      "entry_id": "e5f6d16a-f7f7-4ba0-a9a8-7e18e8e65960",
+      "recorded_at": "2026-09-02T12:19:19.877Z",
+      "hash": "hash_000000006bf4b839",
+      "task_id": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "CROSS_BORDER_CARD_DECLINE",
+        "rawDesc": "International card mandate dropped. Migrating to Programmable CBDC (e-Rupee / USDC) zero-fee settlement rail"
+      }
+    },
+    {
+      "entry_id": "a96ac8f4-1a60-402b-932f-0ef47f066e40",
+      "recorded_at": "2026-09-02T12:19:19.870Z",
+      "hash": "hash_000000004f7394bf",
+      "task_id": "9e8c0cb3-4915-4159-85be-062a1ae648cc",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351559860",
+        "invoiceId": "inv_sim_6014",
+        "amount": 12000
+      }
+    },
+    {
+      "entry_id": "569422d3-064d-46a8-8fde-7329e0726463",
+      "recorded_at": "2026-09-02T12:19:19.840Z",
+      "hash": "hash_000000006ffa10e8",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "afba1370-98d3-4e77-9712-e0ca36f3300c",
+      "recorded_at": "2026-09-02T12:19:19.829Z",
+      "hash": "hash_00000000313f03e7",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "5a0d03b4-ffbe-4c8e-b276-d7ba64d11b88",
+      "recorded_at": "2026-09-02T12:19:19.819Z",
+      "hash": "hash_0000000028a0389e",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "2879041b-520f-4d4f-9894-c32fa3231990",
+      "recorded_at": "2026-09-02T12:19:19.809Z",
+      "hash": "hash_000000004781dd05",
+      "task_id": "d7a6df7a-2a87-4388-a1a6-14a50375f65a",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351559798",
+        "invoiceId": "inv_sim_3544",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "788a98be-f852-46f4-9cb6-3003c5e21345",
+      "recorded_at": "2026-09-02T12:19:19.775Z",
+      "hash": "hash_000000007e3b1bc4",
+      "task_id": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_97d95cb5-7",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788351559769_seq1",
+          "taskId": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,900.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_97d95cb5-7",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_97d95cb5-7",
+          "createdAt": "2026-09-02T12:19:19.769Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "7e16bc7a-920e-496b-9ea2-ee5edbd81980",
+      "recorded_at": "2026-09-02T12:19:19.733Z",
+      "hash": "hash_0000000071fe26e4",
+      "task_id": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "b097d945-cfda-46be-9765-56988bb63dd7",
+      "recorded_at": "2026-09-02T12:19:19.725Z",
+      "hash": "hash_0000000070a6e578",
+      "task_id": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired or deleted by issuing bank"
+      }
+    },
+    {
+      "entry_id": "53094706-1b96-4c96-9891-fde5ecb20f03",
+      "recorded_at": "2026-09-02T12:19:19.718Z",
+      "hash": "hash_000000003cf4a2ed",
+      "task_id": "9fa4fbc2-5cfd-4d94-97ac-c7fd9cfd6973",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351559707",
+        "invoiceId": "inv_sim_4597",
+        "amount": 8900
+      }
+    },
+    {
+      "entry_id": "86414e2a-baed-4085-90f8-793b5abdd84f",
+      "recorded_at": "2026-09-02T12:19:19.684Z",
+      "hash": "hash_000000004a091d19",
+      "task_id": "08030973-a720-4f9c-b2ba-aff156cd5a80",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 98.2,
+          "status": "HEALTHY",
+          "active_circuit_breaker": false,
+          "last_updated": "2026-09-02T13:08:52.122Z"
+        },
+        "scheduledFor": "2026-09-03T12:19:19.680Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "ee3a8e98-0935-48d8-a5ee-82298e49f581",
+      "recorded_at": "2026-09-02T12:19:19.675Z",
+      "hash": "hash_000000001f1cd2f4",
+      "task_id": "08030973-a720-4f9c-b2ba-aff156cd5a80",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "11e58e80-c7e3-4fe6-b1de-c80a9db7669c",
+      "recorded_at": "2026-09-02T12:19:19.664Z",
+      "hash": "hash_000000001a08f701",
+      "task_id": "08030973-a720-4f9c-b2ba-aff156cd5a80",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "668de5d7-4e7f-439b-a6d8-f49738d679b6",
+      "recorded_at": "2026-09-02T12:19:19.652Z",
+      "hash": "hash_000000006c578d19",
+      "task_id": "08030973-a720-4f9c-b2ba-aff156cd5a80",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351559640",
+        "invoiceId": "inv_sim_9471",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "3535ae72-69ff-4742-8186-08020425903a",
+      "recorded_at": "2026-09-02T12:16:49.795Z",
+      "hash": "hash_000000003adc6481",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹75000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "fee2a9d5-ab70-40a3-9338-6d7e15ef15bc",
+      "recorded_at": "2026-09-02T12:16:49.787Z",
+      "hash": "hash_000000003acb723c",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "81d881ed-b02b-445c-b434-43b58811a502",
+      "recorded_at": "2026-09-02T12:16:49.779Z",
+      "hash": "hash_000000002a957139",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice amount ₹75,000 exceeds registered mandate debit limit per RBI circular"
+      }
+    },
+    {
+      "entry_id": "be6eb281-82ae-49fd-bb33-5afb38b736ff",
+      "recorded_at": "2026-09-02T12:16:49.772Z",
+      "hash": "hash_000000003160925c",
+      "task_id": "0a0b8eb0-f0c1-4bcd-b675-5f83a4bac1e7",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351409763",
+        "invoiceId": "inv_sim_1443",
+        "amount": 75000
+      }
+    },
+    {
+      "entry_id": "8fad1a6e-db8a-42e2-bed8-f6c1c5b5af4e",
+      "recorded_at": "2026-09-02T12:16:49.730Z",
+      "hash": "hash_0000000063737edd",
+      "task_id": "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:16:49.725Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "c4d8b30f-bcdb-48bf-8944-b853183dcc9b",
+      "recorded_at": "2026-09-02T12:16:49.721Z",
+      "hash": "hash_000000004d8de244",
+      "task_id": "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "d7f7c227-7465-4088-8784-faf661408022",
+      "recorded_at": "2026-09-02T12:16:49.712Z",
+      "hash": "hash_0000000020f86379",
+      "task_id": "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "ae144566-e747-4576-88b6-2dda0c371dc6",
+      "recorded_at": "2026-09-02T12:16:49.703Z",
+      "hash": "hash_00000000172fd8f8",
+      "task_id": "8132a249-4d0d-4e1e-81b5-1ca5a2f0ce4e",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351409691",
+        "invoiceId": "inv_sim_5020",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "3c66948e-6beb-4033-aefc-d1be2e9866e6",
+      "recorded_at": "2026-09-02T12:12:40.826Z",
+      "hash": "hash_0000000050de1f3d",
+      "task_id": "be4a8377-1f5f-4825-9866-1dfbb10635d9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:12:40.823Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "ff384b14-a562-466c-903e-7ef52ab41394",
+      "recorded_at": "2026-09-02T12:12:40.819Z",
+      "hash": "hash_0000000012c1c123",
+      "task_id": "be4a8377-1f5f-4825-9866-1dfbb10635d9",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "aa61f8ae-24c1-410b-b784-9802b5efaa13",
+      "recorded_at": "2026-09-02T12:12:40.811Z",
+      "hash": "hash_000000004b0e9ec0",
+      "task_id": "be4a8377-1f5f-4825-9866-1dfbb10635d9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "9d87bd74-5a7f-4183-b651-c50fb55851d1",
+      "recorded_at": "2026-09-02T12:12:40.803Z",
+      "hash": "hash_0000000042950b02",
+      "task_id": "be4a8377-1f5f-4825-9866-1dfbb10635d9",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788351160795",
+        "invoiceId": "inv_sim_7137",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "8510884c-d813-4e2e-883b-a189e8d7404e",
+      "recorded_at": "2026-09-02T12:08:52.272Z",
+      "hash": "hash_000000003912e5b0",
+      "task_id": "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:08:52.268Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "2cecf912-a890-42d0-9fe0-9cc57d6e4d3a",
+      "recorded_at": "2026-09-02T12:08:52.265Z",
+      "hash": "hash_000000002cd2d8a9",
+      "task_id": "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "c54c0cf6-9b31-47c1-9390-3bfae7060f65",
+      "recorded_at": "2026-09-02T12:08:52.258Z",
+      "hash": "hash_0000000038ce1cba",
+      "task_id": "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "e3431a4d-6782-4208-8fb5-ca953df94daf",
+      "recorded_at": "2026-09-02T12:08:52.251Z",
+      "hash": "hash_0000000007dcb83a",
+      "task_id": "ee416a53-5b0b-4e2f-af1b-1033fef7e4ad",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788350932243",
+        "invoiceId": "inv_sim_2273",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "a6ab43ce-1df8-485f-98d7-2b7730ef3b90",
+      "recorded_at": "2026-09-02T12:08:49.757Z",
+      "hash": "hash_0000000045c7e5ba",
+      "task_id": "24364636-d8fa-4883-a3d5-43ec9732cf45",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:08:49.753Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "0bb01aca-d7f3-4e03-b1d4-6edb58116c00",
+      "recorded_at": "2026-09-02T12:08:49.749Z",
+      "hash": "hash_000000005b654cea",
+      "task_id": "24364636-d8fa-4883-a3d5-43ec9732cf45",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "731792f2-685f-46cb-9c7c-5cb75789fd5a",
+      "recorded_at": "2026-09-02T12:08:49.741Z",
+      "hash": "hash_0000000059a2cebd",
+      "task_id": "24364636-d8fa-4883-a3d5-43ec9732cf45",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "e0b9bc4e-ee09-4388-8872-b376331f514b",
+      "recorded_at": "2026-09-02T12:08:49.731Z",
+      "hash": "hash_00000000488e0453",
+      "task_id": "24364636-d8fa-4883-a3d5-43ec9732cf45",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788350929722",
+        "invoiceId": "inv_sim_4745",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "85b57995-ff49-4aa4-afcc-93aeafb9d621",
+      "recorded_at": "2026-09-02T12:08:48.490Z",
+      "hash": "hash_0000000043ed60ec",
+      "task_id": "215d0035-9af5-4ec8-b2b4-285055ab5f79",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:08:48.487Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "42023e65-93ff-44b4-b89d-5bd1f17df313",
+      "recorded_at": "2026-09-02T12:08:48.482Z",
+      "hash": "hash_00000000500df23f",
+      "task_id": "215d0035-9af5-4ec8-b2b4-285055ab5f79",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "9d28207c-8c0d-4571-b327-700327fa9bea",
+      "recorded_at": "2026-09-02T12:08:48.474Z",
+      "hash": "hash_000000004cd2f6d2",
+      "task_id": "215d0035-9af5-4ec8-b2b4-285055ab5f79",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout during recurring mandate debit"
+      }
+    },
+    {
+      "entry_id": "e9de74d3-fa07-4ad7-8e8f-5d8139944fd1",
+      "recorded_at": "2026-09-02T12:08:48.465Z",
+      "hash": "hash_0000000030b88a51",
+      "task_id": "215d0035-9af5-4ec8-b2b4-285055ab5f79",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "event_sim_1788350928456",
+        "invoiceId": "inv_sim_9794",
+        "amount": 3500
+      }
+    },
+    {
+      "entry_id": "2de047b5-6249-499f-8f30-729136192f5a",
+      "recorded_at": "2026-09-02T12:05:33.640Z",
+      "hash": "hash_0000000063799d5c",
+      "task_id": "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "ESCALATED_HITL",
+      "action_type": "ESCALATE_HITL_GUARDRAIL",
+      "metadata": {
+        "reason": "Invoice amount ₹45000 exceeds HITL threshold ₹25000",
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "ed8ccbf1-533e-44db-b3b6-49450863063f",
+      "recorded_at": "2026-09-02T12:05:33.633Z",
+      "hash": "hash_0000000074c34221",
+      "task_id": "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "LIMIT_EXCEEDED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "Debit amount exceeds registered mandate limit per RBI e-mandate guidelines.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "239127ca-a18f-4455-9d06-d7e18b53c1f9",
+      "recorded_at": "2026-09-02T12:05:33.627Z",
+      "hash": "hash_000000003155513b",
+      "task_id": "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "RBI_MANDATE_LIMIT_EXCEEDED",
+        "rawDesc": "Invoice ₹45,000 exceeds debit limit"
+      }
+    },
+    {
+      "entry_id": "90c0323a-b972-49dd-814c-e05449e2f30f",
+      "recorded_at": "2026-09-02T12:05:33.622Z",
+      "hash": "hash_0000000016ec24fe",
+      "task_id": "d4ae9a3b-487e-4aeb-8ea2-b3fd7b73a7eb",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "test_evt_tier3_1788350733616",
+        "invoiceId": "inv_test_003",
+        "amount": 45000
+      }
+    },
+    {
+      "entry_id": "e56176c7-2018-4b4c-a65f-dcc240067c54",
+      "recorded_at": "2026-09-02T12:05:33.612Z",
+      "hash": "hash_0000000022a8ce9d",
+      "task_id": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "AWAITING_UPI_AUTH",
+      "action_type": "PROVISION_UPI_MANDATE",
+      "metadata": {
+        "mandateLink": "https://rzp.io/i/autopay_sub_link_90817f99-5",
+        "dunningNudge": {
+          "nudgeId": "nudge_1788350733608_seq1",
+          "taskId": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+          "nudgeSequence": 1,
+          "channel": "WHATSAPP",
+          "recipientPhone": "+919812345678",
+          "recipientEmail": "rajesh.verma@example.com",
+          "messageText": "Hi rajesh verma, your recurring subscription of ₹8,500.00 for Enterprise SaaS Services was paused due to a bank token expiration under RBI guidelines. Click here to instantly re-authorize using UPI AutoPay in 1-tap: https://rzp.io/i/autopay_sub_link_90817f99-5",
+          "actionUrl": "https://rzp.io/i/autopay_sub_link_90817f99-5",
+          "createdAt": "2026-09-02T12:05:33.608Z",
+          "status": "SENT"
+        },
+        "rateLimitingPolicy": "Max 2 Nudges per Invoice (T+0, T+24h)"
+      }
+    },
+    {
+      "entry_id": "87f97474-ab75-4154-b258-07ef1c98d8d5",
+      "recorded_at": "2026-09-02T12:05:33.576Z",
+      "hash": "hash_000000000caab1e0",
+      "task_id": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "MANDATE_EXPIRED",
+          "isTransient": false,
+          "recommendedRail": "UPI_AUTOPAY_MIGRATION",
+          "explanation": "e-Mandate token expired or deleted by user. Auto-switch to UPI AutoPay mandate required.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "1f0c01c4-bab6-47e7-bdf8-4f7abd3b181a",
+      "recorded_at": "2026-09-02T12:05:33.569Z",
+      "hash": "hash_000000002d916722",
+      "task_id": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "TOKEN_REVOKED_OR_EXPIRED",
+        "rawDesc": "RBI e-mandate card token expired"
+      }
+    },
+    {
+      "entry_id": "4a03f540-4418-4d7c-ac1d-29b3ebc61674",
+      "recorded_at": "2026-09-02T12:05:33.563Z",
+      "hash": "hash_0000000040cc8990",
+      "task_id": "2ae7e850-fc6b-45c0-a6b1-f649c495f63f",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "test_evt_tier2_1788350733557",
+        "invoiceId": "inv_test_002",
+        "amount": 8500
+      }
+    },
+    {
+      "entry_id": "1c244355-d849-4d5d-8c3b-8c508c8bfc39",
+      "recorded_at": "2026-09-02T12:05:33.553Z",
+      "hash": "hash_000000001e9aecf7",
+      "task_id": "366beea9-e181-4a92-a739-9cb15218db37",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DIAGNOSING",
+      "new_state": "SCHEDULED_RETRY",
+      "action_type": "TELEMETRY_SCHEDULE_RBI_COMPLIANT",
+      "metadata": {
+        "bankCode": "HDFC",
+        "bankHealth": {
+          "bank_code": "HDFC",
+          "bank_name": "HDFC Bank",
+          "clearing_rate_pct": 12.5,
+          "status": "OUTAGE",
+          "active_circuit_breaker": true,
+          "last_updated": "2026-09-02T11:44:49.334Z"
+        },
+        "scheduledFor": "2026-09-03T12:05:33.548Z",
+        "rbiNoticeEnforced": true,
+        "preDebitComplianceWindow": "24 Hours Mandatory RBI Offset Enforced"
+      }
+    },
+    {
+      "entry_id": "593935ae-93a9-4cc1-a5df-fa2a8ba96d4b",
+      "recorded_at": "2026-09-02T12:05:33.544Z",
+      "hash": "hash_00000000112bac7c",
+      "task_id": "366beea9-e181-4a92-a739-9cb15218db37",
+      "actor": "LLM_CLASSIFIER",
+      "previous_state": "DIAGNOSING",
+      "new_state": "DIAGNOSING",
+      "action_type": "CLASSIFICATION_COMPLETE",
+      "metadata": {
+        "classification": {
+          "category": "ISSUER_TIMEOUT",
+          "isTransient": true,
+          "recommendedRail": "BACKGROUND_RETRY",
+          "explanation": "Payment request timed out at NPCI switch. Telemetry retry recommended.",
+          "classificationMethod": "DETERMINISTIC_RULES",
+          "confidenceScore": 1
+        }
+      }
+    },
+    {
+      "entry_id": "2e3ad3b5-16d7-4467-b415-0320ebe9e893",
+      "recorded_at": "2026-09-02T12:05:33.537Z",
+      "hash": "hash_0000000020d191c9",
+      "task_id": "366beea9-e181-4a92-a739-9cb15218db37",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": "DETECTED",
+      "new_state": "DIAGNOSING",
+      "action_type": "DIAGNOSIS_STARTED",
+      "metadata": {
+        "rawCode": "BAD_REQUEST_PAYMENT_TIMED_OUT",
+        "rawDesc": "NPCI switch timeout"
+      }
+    },
+    {
+      "entry_id": "b9e45fda-bf21-4990-b762-17e27e9a091a",
+      "recorded_at": "2026-09-02T12:05:33.530Z",
+      "hash": "hash_000000006c701b41",
+      "task_id": "366beea9-e181-4a92-a739-9cb15218db37",
+      "actor": "SYSTEM_DAEMON",
+      "previous_state": null,
+      "new_state": "DETECTED",
+      "action_type": "WEBHOOK_INGESTED",
+      "metadata": {
+        "eventId": "test_evt_idempotent_1788350733523",
+        "invoiceId": "inv_test_001",
+        "amount": 3500
+      }
+    },
     {
       "entry_id": "51335b3d-07c9-4713-9c22-46e91ff40c7d",
       "recorded_at": "2026-09-02T11:34:46.898Z",
@@ -4699,10 +8134,10 @@
     "HDFC": {
       "bank_code": "HDFC",
       "bank_name": "HDFC Bank",
-      "clearing_rate_pct": 12.5,
-      "status": "OUTAGE",
-      "active_circuit_breaker": true,
-      "last_updated": "2026-09-02T11:44:49.334Z"
+      "clearing_rate_pct": 98.2,
+      "status": "HEALTHY",
+      "active_circuit_breaker": false,
+      "last_updated": "2026-09-02T13:08:52.122Z"
     },
     "SBI": {
       "bank_code": "SBI",
