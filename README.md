@@ -10,6 +10,10 @@
 
 ---
 
+![MandateHeal Engine FinOps Command Center Dashboard](docs/images/dashboard_overview.png)
+
+---
+
 ## 📌 1. Executive Summary: What We Solve
 
 In India’s recurring subscription economy, **15% to 30% of monthly subscription debits fail**. Over **80% of these failures represent involuntary churn**—subscribers who love the product, but whose payments bounce due to:
